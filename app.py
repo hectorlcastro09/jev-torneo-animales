@@ -21,6 +21,8 @@ PUERTO = int(os.environ.get("TORNEO_PUERTO", "8777"))
 ORIGEN = f"http://127.0.0.1:{PUERTO}"
 TOKEN = secrets.token_urlsafe(24)  # evita que otra página dispare torneos (y gaste saldo) por su cuenta
 ANIMALES = motor.cargar_animales()
+POR_NOMBRE = {a["nombre"]: a for a in ANIMALES}
+TIPOS = ("terrestre", "volador", "marino")
 WEB = Path(__file__).resolve().parent / "web"
 
 
@@ -53,14 +55,13 @@ def correr(parametros):
 
 
 def iniciar(cuerpo):
-    tipos = [t for t in cuerpo.get("tipos", []) if t in ("terrestre", "volador", "marino")]
     semilla = cuerpo.get("semilla")
+    cupos = cuerpo.get("por_tipo") or {}
     parametros = {
-        "n": int(cuerpo.get("n", 1000)),
+        "por_tipo": {t: max(0, int(cupos.get(t, 0))) for t in TIPOS},
         "arena": cuerpo.get("arena", "tierra"),
         "modo": "una" if cuerpo.get("modo") == "una" else "turbo",
         "azar": bool(cuerpo.get("azar")),
-        "tipos": tipos or None,
         "semilla": int(semilla) if str(semilla or "").strip().lstrip("-").isdigit() else None,
     }
     if PARTIDA.hilo and PARTIDA.hilo.is_alive():
@@ -97,8 +98,9 @@ class Handler(BaseHTTPRequestHandler):
             html = (WEB / "index.html").read_text(encoding="utf-8").replace("__TOKEN__", TOKEN)
             return self.responder(200, html, "text/html; charset=utf-8")
         if url.path == "/api/meta":
-            por_tipo = {t: sum(a["tipo"] == t for a in ANIMALES) for t in ("terrestre", "volador", "marino")}
-            return self.responder(200, json.dumps({"total": len(ANIMALES), "por_tipo": por_tipo}))
+            por_tipo = {t: sum(a["tipo"] == t for a in ANIMALES) for t in TIPOS}
+            return self.responder(200, json.dumps({"total": len(ANIMALES), "por_tipo": por_tipo, "animales": ANIMALES},
+                                                  ensure_ascii=False))
         if url.path == "/api/eventos":
             consulta = parse_qs(url.query)
             if consulta.get("token", [""])[0] != TOKEN:
@@ -147,12 +149,19 @@ class Handler(BaseHTTPRequestHandler):
             cuerpo = json.loads(self.rfile.read(largo)) if 0 < largo < 4096 else {}
             if self.path == "/api/iniciar":
                 return self.responder(200, json.dumps(iniciar(cuerpo)))
+            if self.path == "/api/duelo":
+                a, b = POR_NOMBRE.get(cuerpo.get("a")), POR_NOMBRE.get(cuerpo.get("b"))
+                if not a or not b or a is b:
+                    raise ValueError("Elige dos animales distintos de la lista")
+                return self.responder(200, json.dumps(motor.duelo(a, b), ensure_ascii=False))
             if self.path == "/api/detener":
                 PARTIDA.cancelar.set()
                 return self.responder(200, json.dumps({"ok": True}))
             self.responder(404, json.dumps({"error": "No encontrado"}))
         except (ValueError, TypeError) as error:
             self.responder(400, json.dumps({"error": str(error)}))
+        except RuntimeError as error:  # fallo al hablar con Jev
+            self.responder(502, json.dumps({"error": str(error)}))
 
     def log_message(self, *_args):
         pass
@@ -160,6 +169,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     motor.llave()  # falla de entrada, con mensaje claro, si no hay llave
+    threading.Thread(target=motor.calentar, daemon=True).start()  # la primera respuesta ya sale rápida
     servidor = ThreadingHTTPServer(("127.0.0.1", PUERTO), Handler)
     servidor.daemon_threads = True
     print(f"Torneo de animales con Jev: {ORIGEN}   (Ctrl+C para apagar)", flush=True)

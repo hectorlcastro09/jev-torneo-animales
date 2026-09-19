@@ -6,117 +6,136 @@
 <meta name="torneo-token" content="__TOKEN__">
 <title>Torneo de animales · Jev</title>
 <style>
-  :root { --fondo:#0b1020; --panel:#131a2e; --borde:#232c47; --texto:#e8ecf8; --tenue:#8d97b5; --acento:#f59e0b; --ok:#34d399; --mal:#f87171; }
+  :root { --fondo:#0b1020; --panel:#131a2e; --hueco:#0d1428; --borde:#232c47; --texto:#e8ecf8; --tenue:#8d97b5; --acento:#f59e0b; --mal:#f87171; }
   body[data-arena="agua"] { --acento:#38bdf8; } body[data-arena="aire"] { --acento:#a78bfa; } body[data-arena="sorteo"] { --acento:#34d399; }
   * { box-sizing:border-box; }
+  [hidden] { display:none !important; }  /* sin esto, un display:grid propio le gana al atributo hidden */
   body { margin:0; background:var(--fondo); color:var(--texto); font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
   main { max-width:1180px; margin:0 auto; padding:22px 18px 60px; }
   header h1 { margin:0; font-size:26px; letter-spacing:-.02em; } header h1 span { color:var(--acento); }
-  header p { margin:4px 0 18px; color:var(--tenue); }
+  header p { margin:4px 0 16px; color:var(--tenue); }
   .panel { background:var(--panel); border:1px solid var(--borde); border-radius:16px; padding:16px 18px; }
-  .controles { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px 22px; align-items:end; }
-  label.t, .t { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--tenue); margin-bottom:6px; }
-  .n { display:flex; gap:10px; align-items:center; } .n input[type=range] { flex:1; accent-color:var(--acento); }
-  input[type=number], input[type=text] { background:#0d1428; color:var(--texto); border:1px solid var(--borde); border-radius:10px; padding:8px 10px; font:inherit; width:96px; font-variant-numeric:tabular-nums; }
-  .seg { display:flex; flex-wrap:wrap; gap:6px; } .seg label { cursor:pointer; }
-  .seg input { position:absolute; opacity:0; pointer-events:none; }
-  .seg span { display:block; padding:8px 12px; border-radius:10px; border:1px solid var(--borde); background:#0d1428; color:var(--tenue); user-select:none; }
+  .t { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--tenue); margin-bottom:6px; }
+  .pestanas { display:flex; gap:8px; margin-bottom:14px; }
+  .pestanas button { background:var(--hueco); color:var(--tenue); border:1px solid var(--borde); padding:9px 16px; }
+  .pestanas button[aria-selected="true"] { background:var(--acento); border-color:var(--acento); color:#0b1020; }
+  .rejilla { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px 22px; align-items:end; }
+  .cupos { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 26px; align-items:center; }
+  .cupo { display:grid; grid-template-columns:118px minmax(80px,1fr) 92px 64px; gap:10px; align-items:center; }
+  .cupo input[type=range] { width:100%; accent-color:var(--acento); } .cupo small { color:var(--tenue); font-variant-numeric:tabular-nums; }
+  .total { grid-row:1 / span 3; grid-column:2; text-align:right; } .total b { display:block; font-size:40px; line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums; color:var(--acento); }
+  .atajos { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-top:4px; }
+  .atajos button { background:var(--hueco); color:var(--texto); border:1px solid var(--borde); padding:6px 12px; font-weight:600; border-radius:99px; }
+  input[type=number], input[type=text], input[type=search] { background:var(--hueco); color:var(--texto); border:1px solid var(--borde); border-radius:10px; padding:8px 10px; font:inherit; width:100%; font-variant-numeric:tabular-nums; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; } .seg label { cursor:pointer; } .seg input { position:absolute; opacity:0; pointer-events:none; }
+  .seg span { display:block; padding:8px 12px; border-radius:10px; border:1px solid var(--borde); background:var(--hueco); color:var(--tenue); user-select:none; }
   .seg input:checked + span { background:var(--acento); border-color:var(--acento); color:#0b1020; font-weight:650; }
   .seg input:focus-visible + span { outline:2px solid var(--texto); outline-offset:2px; }
-  .tipos label { margin-right:14px; white-space:nowrap; color:var(--texto); } .tipos input { accent-color:var(--acento); }
+  .elige { display:flex; gap:8px; } .elige button { background:var(--hueco); border:1px solid var(--borde); color:var(--texto); padding:8px 12px; }
+  .nota { display:block; margin-top:6px; color:var(--tenue); font-size:12px; line-height:1.35; max-width:340px; }
   .acciones { display:flex; gap:10px; }
   button { font:inherit; font-weight:650; border:0; border-radius:12px; padding:11px 18px; cursor:pointer; }
-  #iniciar { background:var(--acento); color:#0b1020; flex:1; } #detener { background:#2a3352; color:var(--texto); }
+  .principal { background:var(--acento); color:#0b1020; flex:1; } #detener { background:#2a3352; color:var(--texto); }
   button:disabled { opacity:.45; cursor:not-allowed; }
   .ring { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch; margin-top:16px; }
-  .ficha { text-align:center; padding:18px 12px; min-height:188px; display:flex; flex-direction:column; justify-content:center; }
+  .ficha { text-align:center; padding:18px 12px; min-height:188px; display:flex; flex-direction:column; justify-content:center; transition:opacity .15s; }
   .ficha .rol { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--tenue); }
   .ficha .emoji { font-size:64px; line-height:1.1; margin:4px 0; }
   .ficha .nombre { font-size:21px; font-weight:700; letter-spacing:-.01em; } .ficha .clase { color:var(--tenue); font-size:13px; }
-  .ficha .racha { margin-top:8px; font-variant-numeric:tabular-nums; color:var(--acento); font-weight:650; }
-  .ficha.campeon { border-color:var(--acento); box-shadow:0 0 0 1px var(--acento) inset; }
-  .ficha.caido { opacity:.55; } .ficha.caido .emoji { filter:grayscale(1); }
-  .vs { display:flex; flex-direction:column; justify-content:center; align-items:center; min-width:170px; gap:8px; }
+  .ficha .racha { margin-top:8px; font-variant-numeric:tabular-nums; color:var(--acento); font-weight:650; min-height:22px; }
+  .ficha.gana { border-color:var(--acento); box-shadow:0 0 0 1px var(--acento) inset; }
+  .ficha.caido { opacity:.5; } .ficha.caido .emoji { filter:grayscale(1); }
+  .vs { display:flex; flex-direction:column; justify-content:center; align-items:center; min-width:180px; gap:8px; }
   .vs .rotulo { font-size:26px; font-weight:800; color:var(--tenue); } .vs .lugar { font-size:13px; color:var(--tenue); }
-  .barra { width:100%; height:12px; background:#0d1428; border-radius:99px; overflow:hidden; border:1px solid var(--borde); }
+  .barra { width:100%; height:12px; background:var(--hueco); border-radius:99px; overflow:hidden; border:1px solid var(--borde); }
   .barra i { display:block; height:100%; width:0; background:var(--acento); transition:width .12s linear; }
   .vs .veredicto { font-size:13px; text-align:center; min-height:38px; }
+  #tres { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+  #tres .panel { padding:12px 14px; } #tres .sel { border-color:var(--acento); } #tres b { display:block; font-size:16px; margin-top:2px; } #tres small { color:var(--tenue); font-variant-numeric:tabular-nums; }
   .metricas { display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:12px; margin-top:14px; }
   .dato { padding:13px 15px; } .dato .v { font-size:28px; font-weight:750; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
   .dato .v small { font-size:14px; font-weight:600; color:var(--tenue); margin-left:3px; } .dato .s { color:var(--tenue); font-size:12.5px; min-height:18px; }
   .dato.estrella { border-color:var(--acento); } .dato.estrella .v { color:var(--acento); }
-  .progreso { height:6px; background:#0d1428; border-radius:99px; margin-top:8px; overflow:hidden; } .progreso i { display:block; height:100%; width:0; background:var(--acento); }
+  .progreso { height:6px; background:var(--hueco); border-radius:99px; margin-top:8px; overflow:hidden; } .progreso i { display:block; height:100%; width:0; background:var(--acento); }
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
   .lista { max-height:330px; overflow:auto; margin:0; padding:0; list-style:none; font-size:13.5px; }
   .lista li { padding:6px 2px; border-bottom:1px solid var(--borde); display:flex; gap:8px; align-items:baseline; }
   .lista .num { color:var(--tenue); font-variant-numeric:tabular-nums; min-width:44px; } .lista .p { margin-left:auto; color:var(--tenue); font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .lista .sorpresa { color:var(--mal); font-weight:650; } h2 { font-size:14px; margin:0 0 8px; letter-spacing:.02em; }
+  .sorpresa { color:var(--mal); font-weight:650; } h2 { font-size:14px; margin:0 0 8px; letter-spacing:.02em; }
   #final { margin-top:14px; border-color:var(--acento); } #final h3 { margin:0 0 4px; font-size:24px; } #final .cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:12px; }
   #final ol, #final ul { margin:6px 0 0; padding-left:20px; font-size:13.5px; } #final code { color:var(--tenue); font-size:12px; word-break:break-all; }
   #aviso { margin-top:12px; color:var(--mal); } .pie { margin-top:22px; color:var(--tenue); font-size:12.5px; }
-  @media (max-width:760px) { .ring { grid-template-columns:1fr; } .vs { min-width:0; } .dos { grid-template-columns:1fr; } .ficha { min-height:0; } }
+  @media (max-width:760px) { .ring { grid-template-columns:1fr; } .vs { min-width:0; } .dos, #tres { grid-template-columns:1fr; } .ficha { min-height:0; } .cupos { grid-template-columns:1fr; } .total { grid-row:auto; grid-column:1; text-align:left; } .cupo { grid-template-columns:96px 1fr 80px; } .cupo small { display:none; } }
 </style>
 </head>
 <body data-arena="tierra">
 <main>
   <header>
     <h1>Torneo de animales <span>· arbitrado por Jev</span></h1>
-    <p>El ganador se queda y enfrenta al siguiente hasta que quede uno solo. Cada pelea la decide Jev (TypeSafe System One); aquí se ve cuánto tarda.</p>
+    <p>Cada pelea la decide Jev (TypeSafe System One). Aquí se ve cuánto tarda en responder.</p>
   </header>
 
-  <section class="panel controles" aria-label="Configuración del torneo">
-    <div>
-      <label class="t" for="n">Animales en el torneo</label>
-      <div class="n"><input id="nr" type="range" min="2" max="1000" value="1000" aria-label="Animales"><input id="n" type="number" min="2" max="1000" value="1000"></div>
+  <section class="panel" aria-label="Configuración">
+    <div class="pestanas" role="tablist">
+      <button role="tab" id="tab-torneo" aria-selected="true">🏆 Torneo</button>
+      <button role="tab" id="tab-duelo" aria-selected="false">🥊 Pelea individual</button>
     </div>
-    <div>
-      <span class="t">Dónde pelean</span>
-      <div class="seg" id="arena">
-        <label><input type="radio" name="arena" value="tierra" checked><span>🏜️ Tierra</span></label>
-        <label><input type="radio" name="arena" value="agua"><span>🌊 Agua</span></label>
-        <label><input type="radio" name="arena" value="aire"><span>☁️ Aire</span></label>
-        <label><input type="radio" name="arena" value="sorteo"><span>🎲 Sorteo por pelea</span></label>
+
+    <div class="rejilla">
+      <div class="cupos" id="bloque-cupos">
+        <div class="cupo"><span>🐾 Terrestres</span><input type="range" id="r-terrestre" min="0" aria-label="Terrestres"><input type="number" id="c-terrestre" min="0"><small id="m-terrestre"></small></div>
+        <div class="total"><span class="t">Total de animales</span><b id="total">—</b></div>
+        <div class="cupo"><span>🦅 Voladores</span><input type="range" id="r-volador" min="0" aria-label="Voladores"><input type="number" id="c-volador" min="0"><small id="m-volador"></small></div>
+        <div class="cupo"><span>🐟 Marinos</span><input type="range" id="r-marino" min="0" aria-label="Marinos"><input type="number" id="c-marino" min="0"><small id="m-marino"></small></div>
+        <div class="atajos"><span class="t" style="margin:0 6px 0 0">Repartir un total</span><button data-total="100">100</button><button data-total="500">500</button><button data-total="1000">1,000</button><button data-total="2000">2,000</button><button data-total="todos">Todos</button></div>
       </div>
-    </div>
-    <div>
-      <span class="t">Velocidad</span>
-      <div class="seg">
-        <label title="Una llamada a Jev decide hasta 50 peleas a la vez"><input type="radio" name="modo" value="turbo" checked><span>⚡ Turbo (por lotes)</span></label>
-        <label title="Una llamada a Jev por cada pelea: se ve la latencia real de cada respuesta"><input type="radio" name="modo" value="una"><span>👁️ Pelea por pelea</span></label>
+
+      <div id="bloque-elige-a" hidden><label class="t" for="animal-a">Animal 1</label><div class="elige"><input type="search" id="animal-a" list="lista-animales" placeholder="Escribe para buscar…" autocomplete="off"><button id="azar-a" title="Elegir al azar">🎲</button></div></div>
+      <div id="bloque-elige-b" hidden><label class="t" for="animal-b">Animal 2</label><div class="elige"><input type="search" id="animal-b" list="lista-animales" placeholder="Escribe para buscar…" autocomplete="off"><button id="azar-b" title="Elegir al azar">🎲</button></div></div>
+      <datalist id="lista-animales"></datalist>
+
+      <div>
+        <span class="t">Dónde pelean</span>
+        <div class="seg">
+          <label><input type="radio" name="arena" value="tierra" checked><span>🏜️ Tierra</span></label>
+          <label><input type="radio" name="arena" value="agua"><span>🌊 Agua</span></label>
+          <label><input type="radio" name="arena" value="aire"><span>☁️ Aire</span></label>
+          <label id="op-sorteo"><input type="radio" name="arena" value="sorteo"><span>🎲 Sorteo por pelea</span></label>
+        </div>
       </div>
-    </div>
-    <div>
-      <span class="t">Resultado de cada pelea</span>
-      <div class="seg">
-        <label title="Gana siempre el que Jev considera más probable"><input type="radio" name="azar" value="" checked><span>Gana el favorito</span></label>
-        <label title="Se sortea con la probabilidad que da Jev: a veces gana el débil"><input type="radio" name="azar" value="1"><span>Con azar</span></label>
+      <div class="solo-torneo">
+        <span class="t">Velocidad</span>
+        <div class="seg">
+          <label title="Una llamada a Jev decide hasta 50 peleas a la vez"><input type="radio" name="modo" value="turbo" checked><span>⚡ Turbo (por lotes)</span></label>
+          <label title="Una llamada a Jev por cada pelea: se ve la latencia real de cada respuesta"><input type="radio" name="modo" value="una"><span>👁️ Pelea por pelea</span></label>
+        </div>
       </div>
+      <div class="solo-torneo">
+        <span class="t">Resultado de cada pelea</span>
+        <div class="seg">
+          <label title="Gana siempre el que Jev considera más probable"><input type="radio" name="azar" value="" checked><span>Gana el favorito</span></label>
+          <label title="Se sortea con la probabilidad que da Jev: a veces gana el débil"><input type="radio" name="azar" value="1"><span>Con azar</span></label>
+        </div>
+        <small class="nota">Jev siempre señala al más probable. «Con azar» es el juego tirando un dado cargado con esa probabilidad: si Jev da 0.40, ese animal gana 4 de cada 10 veces.</small>
+      </div>
+      <div class="solo-torneo"><label class="t" for="semilla">Semilla del sorteo (vacía = al azar)</label><input id="semilla" type="text" inputmode="numeric" placeholder="p. ej. 7" style="max-width:130px"></div>
+      <div class="acciones"><button class="principal" id="iniciar">Iniciar torneo</button><button id="detener" disabled>Detener</button></div>
     </div>
-    <div class="tipos">
-      <span class="t">Quiénes participan</span>
-      <label><input type="checkbox" value="terrestre" checked> terrestres <small id="c-terrestre"></small></label>
-      <label><input type="checkbox" value="volador" checked> voladores <small id="c-volador"></small></label>
-      <label><input type="checkbox" value="marino" checked> marinos <small id="c-marino"></small></label>
-    </div>
-    <div>
-      <label class="t" for="semilla">Semilla del sorteo (vacía = al azar)</label>
-      <input id="semilla" type="text" inputmode="numeric" placeholder="p. ej. 7">
-    </div>
-    <div class="acciones"><button id="iniciar">Iniciar torneo</button><button id="detener" disabled>Detener</button></div>
   </section>
   <div id="aviso" role="alert" hidden></div>
 
-  <section class="ring" aria-live="off">
-    <div class="panel ficha campeon"><div class="rol">Campeón</div><div class="emoji" id="ce">🏟️</div><div class="nombre" id="cn">Esperando el sorteo</div><div class="clase" id="cc">&nbsp;</div><div class="racha" id="cr">&nbsp;</div></div>
+  <section class="ring">
+    <div class="panel ficha gana" id="f-izq"><div class="rol" id="rol-izq">Campeón</div><div class="emoji" id="ce">🏟️</div><div class="nombre" id="cn">Esperando el sorteo</div><div class="clase" id="cc">&nbsp;</div><div class="racha" id="cr">&nbsp;</div></div>
     <div class="vs"><span class="rotulo">VS</span><div class="lugar" id="lugar">&nbsp;</div><div class="barra"><i id="barra"></i></div><div class="veredicto" id="veredicto">&nbsp;</div></div>
-    <div class="panel ficha" id="rficha"><div class="rol" id="rrol">Retador</div><div class="emoji" id="re">❔</div><div class="nombre" id="rn">—</div><div class="clase" id="rc">&nbsp;</div><div class="racha">&nbsp;</div></div>
+    <div class="panel ficha" id="f-der"><div class="rol" id="rol-der">Retador</div><div class="emoji" id="re">❔</div><div class="nombre" id="rn">—</div><div class="clase" id="rc">&nbsp;</div><div class="racha" id="rr">&nbsp;</div></div>
   </section>
+  <section id="tres" hidden></section>
 
   <section class="metricas">
     <div class="panel dato estrella"><div class="t">Última respuesta de Jev</div><div class="v" id="m-ultima">—</div><div class="s" id="m-ultima-s">&nbsp;</div></div>
-    <div class="panel dato estrella"><div class="t">Tiempo por decisión</div><div class="v" id="m-dec">—</div><div class="s">promedio de todo el torneo</div></div>
+    <div class="panel dato estrella"><div class="t">Tiempo por decisión</div><div class="v" id="m-dec">—</div><div class="s" id="m-dec-s">&nbsp;</div></div>
     <div class="panel dato"><div class="t">Decisiones por segundo</div><div class="v" id="m-dps">—</div><div class="s" id="m-dps-s">&nbsp;</div></div>
-    <div class="panel dato"><div class="t">Peleas</div><div class="v" id="m-peleas">—</div><div class="progreso"><i id="prog"></i></div></div>
+    <div class="panel dato"><div class="t" id="m-peleas-t">Peleas</div><div class="v" id="m-peleas">—</div><div class="progreso"><i id="prog"></i></div></div>
     <div class="panel dato"><div class="t">Llamadas a Jev</div><div class="v" id="m-llam">—</div><div class="s" id="m-tok">&nbsp;</div></div>
     <div class="panel dato"><div class="t">Costo</div><div class="v" id="m-costo">—</div><div class="s" id="m-tiempo">&nbsp;</div></div>
   </section>
@@ -133,83 +152,102 @@
 <script>
 const TOKEN = document.querySelector('meta[name="torneo-token"]').content;
 const $ = id => document.getElementById(id);
-const PRECIO = 0.042 / 1e6;
+const PRECIO = 0.042 / 1e6, TIPOS = ['terrestre', 'volador', 'marino'];
 const LUGAR = { tierra: '🏜️ en tierra', agua: '🌊 en el agua', aire: '☁️ en el aire' };
-const ICONO = { tierra: '🏜️', agua: '🌊', aire: '☁️' };
-let fuente = null, cola = [], st = null, t0 = 0, totalLista = 1000, porTipo = {};
+const ICONO = { tierra: '🏜️', agua: '🌊', aire: '☁️' }, NOMBRE_ARENA = { tierra: 'Tierra', agua: 'Agua', aire: 'Aire' };
+let fuente = null, cola = [], st = null, t0 = 0, maximos = {}, animales = [], indice = new Map(), modoDuelo = false, duelos = { n: 0, tokens: 0 };
 
 // Emoji por palabra clave del nombre; si no hay, por clase.
-const EMOJI = [[/tiburon|pintarroja|cazon/,'🦈'],[/ballena|cachalote|rorcual/,'🐋'],[/orca|delfin|marsopa|calderon|beluga|narval|vaquita|zifio/,'🐬'],[/foca|leon marino|lobo marino|morsa|elefante marino|oso marino|manati|dugongo/,'🦭'],
- [/pulpo/,'🐙'],[/calamar|sepia|nautilo/,'🦑'],[/cangrejo|centolla|necora|buey de mar/,'🦀'],[/langosta espinosa|bogavante|cigala/,'🦞'],[/camaron|langostino|krill/,'🦐'],[/medusa|carabela|avispa de mar/,'🪼'],[/coral|gorgonia|anemona|esponja/,'🪸'],[/ostra|almeja|mejillon|vieira|berberecho|coquina/,'🦪'],[/caracola|caracol cono|lapa|abulon|bigaro/,'🐚'],[/pez globo|pez erizo/,'🐡'],[/pez payaso|pez mariposa|pez angel|pez cirujano|pez loro|pez mandarin|damisela/,'🐠'],
- [/pinguino/,'🐧'],[/aguila|halcon|gavilan|azor|milano|cernicalo|buitre|condor|zopilote|quebrantahuesos|pigargo|busardo|caracara/,'🦅'],[/buho|lechuza|mochuelo|carabo|autillo|tecolote/,'🦉'],[/guacamayo|loro|cacatua|periquito|cotorra|agapornis|kea|lori|ninfa/,'🦜'],[/cisne/,'🦢'],[/pato|ganso|cerceta|eider|barnacla|porron/,'🦆'],[/flamenco/,'🦩'],[/pavo real/,'🦚'],[/pavo/,'🦃'],[/gallo/,'🐓'],[/gallina/,'🐔'],[/paloma|tortola/,'🕊️'],[/dodo/,'🦤'],
- [/murcielago|zorro volador|noctulo/,'🦇'],[/abeja|abejorro|avispa|avispon/,'🐝'],[/mariposa|polilla|esfinge|morfo/,'🦋'],[/hormiga|termita/,'🐜'],[/mariquita/,'🐞'],[/escarabajo|ciervo volante|gorgojo/,'🪲'],[/grillo|saltamontes|langosta del desierto|cigarra|weta/,'🦗'],[/cucaracha/,'🪳'],[/mosquito/,'🦟'],[/mosca|tabano|moscarda/,'🪰'],[/arana|tarantula|viuda negra|solifugo|opilion/,'🕷️'],[/escorpion|vinagrillo/,'🦂'],[/caracol|babosa/,'🐌'],[/lombriz|gusano|sanguijuela|ciempies|milpies|escolopendra|oruga/,'🪱'],
- [/cocodrilo|caiman|aligator|gavial|yacare/,'🐊'],[/tortuga|matamata/,'🐢'],[/serpiente|vibora|cobra|piton|boa|anaconda|mamba|taipan|cascabel|culebra|krait|boomslang|mocasin|barba amarilla|cabeza de cobre/,'🐍'],[/dragon de komodo|varano/,'🐉'],[/rana|sapo/,'🐸'],
- [/leon africano|leon$/,'🦁'],[/tigre/,'🐯'],[/leopardo|jaguar|guepardo|pantera|puma|ocelote|serval|lince|caracal/,'🐆'],[/gato/,'🐈'],[/lobo|coyote|chacal|dingo|licaon|cuon/,'🐺'],[/zorro|fenec/,'🦊'],[/panda gigante/,'🐼'],[/oso polar/,'🐻‍❄️'],[/koala/,'🐨'],[/oso/,'🐻'],[/gorila/,'🦍'],[/orangutan/,'🦧'],[/mono|chimpance|bonobo|babuino|mandril|macaco|lemur|gibon|titi|tamarino|langur/,'🐒'],
- [/elefante/,'🐘'],[/rinoceronte/,'🦏'],[/hipopotamo/,'🦛'],[/jirafa|okapi/,'🦒'],[/cebra/,'🦓'],[/caballo|poni|burro|mula|onagro|kiang/,'🐎'],[/camello|dromedario/,'🐫'],[/llama|alpaca|guanaco|vicuna/,'🦙'],[/bisonte/,'🦬'],[/bufalo|yak|gaur|banteng|nu |buey/,'🐃'],[/vaca|toro|cebu/,'🐄'],[/jabali|facoquero|pecari/,'🐗'],[/cerdo/,'🐖'],[/cabra|ibice|rebeco|muflon|borrego/,'🐐'],[/oveja/,'🐑'],[/ciervo|alce|reno|wapiti|gamo|corzo|gacela|antilope|impala|kudu|orix/,'🦌'],
- [/canguro|ualabi/,'🦘'],[/conejo|liebre/,'🐇'],[/raton|topillo|lemming|hamster|jerbo/,'🐁'],[/rata/,'🐀'],[/ardilla|marmota|perrito de la pradera/,'🐿️'],[/erizo europeo|erizo orejudo|puercoespin|equidna/,'🦔'],[/nutria/,'🦦'],[/mofeta|zorrillo/,'🦨'],[/tejon|gloton/,'🦡'],[/perezoso/,'🦥'],[/castor|capibara|coipo/,'🦫'],[/mapache|coati/,'🦝'],[/avestruz|emu|casuario|nandu/,'🦤'],[/colibri|zunzuncito/,'🐦']];
+const EMOJI = [[/tiburon|pintarroja|cazon|marrajo|mielga|musola|tollo|wobbegong/,'🦈'],[/ballena|cachalote|rorcual/,'🐋'],[/orca|delfin|marsopa|calderon|beluga|narval|vaquita|zifio|franciscana/,'🐬'],[/foca|leon marino|lobo marino|morsa|elefante marino|oso marino|manati|dugongo/,'🦭'],
+ [/pulpo|argonauta/,'🐙'],[/calamar|sepia|nautilo|pota|chopito|sepiola/,'🦑'],[/cangrejo|centolla|necora|buey de mar|jaiba|zapaya/,'🦀'],[/langosta espinosa|langosta del caribe|langosta de roca|bogavante|cigala|cigarra de mar|santiaguino/,'🦞'],[/camaron|langostino|krill|gamba|carabinero|quisquilla/,'🦐'],[/medusa|carabela|avispa de mar|velero de mar|sifonoforo/,'🪼'],[/coral|gorgonia|anemona|esponja|zoantario/,'🪸'],[/ostra|ostion|almeja|mejillon|vieira|berberecho|coquina|chirla|nacra|zamburina|volandeira/,'🦪'],[/caracola|caracol cono|caracol murex|caracol turbante|caracol luna|caracol violeta|cauri|lapa|abulon|bigaro|buccino|canailla/,'🐚'],[/pez globo|pez erizo/,'🐡'],[/pez payaso|pez mariposa|pez angel|pez cirujano|pez loro|pez mandarin|damisela|pez estandarte|gramma|garibaldi/,'🐠'],
+ [/pinguino/,'🐧'],[/aguila|halcon|gavilan|azor|milano|cernicalo|buitre|condor|zopilote|quebrantahuesos|pigargo|busardo|caracara|aguilucho|elanio|arpia|aura /,'🦅'],[/buho|lechuza|lechuzon|mochuelo|carabo|autillo|tecolote|ninox/,'🦉'],[/guacamayo|loro|cacatua|periquito|cotorra|agapornis|kea|lori|ninfa|rosella|perico|kaka/,'🦜'],[/cisne/,'🦢'],[/pato|ganso|cerceta|eider|barnacla|porron|anade|ansar|serreta|silbon|tarro/,'🦆'],[/flamenco/,'🦩'],[/pavo real/,'🦚'],[/pavo/,'🦃'],[/gallo/,'🐓'],[/gallina|pintada comun/,'🐔'],[/paloma|tortola|zenaida|goura/,'🕊️'],[/avestruz|emu|casuario|nandu|kagu/,'🦤'],
+ [/murcielago|zorro volador|noctulo|vampiro|barbastela/,'🦇'],[/abeja|abejorro|avispa|avispon/,'🐝'],[/mariposa|polilla|esfinge|morfo|vanesa|pavon/,'🦋'],[/hormiga|termita/,'🐜'],[/mariquita/,'🐞'],[/escarabajo|ciervo volante|gorgojo|cetonia|ditisco/,'🪲'],[/grillo|saltamontes|langosta del desierto|langosta migratoria|cigarra|weta|chapulin|esperanza|chicharrita|machaca/,'🦗'],[/cucaracha/,'🪳'],[/mosquito|jejen|flebotomo|tipula/,'🦟'],[/mosca|tabano|moscarda/,'🪰'],[/arana|tarantula|viuda negra|solifugo|opilion/,'🕷️'],[/escorpion|vinagrillo/,'🦂'],[/caracol|babosa/,'🐌'],[/lombriz|gusano|sanguijuela|ciempies|milpies|escolopendra|oruga/,'🪱'],
+ [/cocodrilo|caiman|aligator|gavial|yacare/,'🐊'],[/tortuga|matamata|galapago/,'🐢'],[/serpiente|vibora|cobra|piton|boa|anaconda|mamba|taipan|cascabel|culebra|krait|boomslang|mocasin|barba amarilla|cabeza de cobre|yarara|maja /,'🐍'],[/dragon de komodo|varano/,'🐉'],[/rana|sapo|sapillo/,'🐸'],
+ [/leon africano|leon asiatico/,'🦁'],[/tigre/,'🐯'],[/leopardo|jaguar|guepardo|pantera|puma|ocelote|serval|lince|caracal/,'🐆'],[/gato|guina|colocolo/,'🐈'],[/lobo|coyote|chacal|dingo|licaon|cuon/,'🐺'],[/zorro|fenec/,'🦊'],[/panda gigante/,'🐼'],[/oso polar/,'🐻‍❄️'],[/koala/,'🐨'],[/oso/,'🐻'],[/gorila/,'🦍'],[/orangutan/,'🦧'],[/mono|chimpance|bonobo|babuino|mandril|macaco|lemur|gibon|titi|tamarino|langur|capuchino de cara|aullador|mangabey|colobo/,'🐒'],
+ [/elefante/,'🐘'],[/rinoceronte/,'🦏'],[/hipopotamo/,'🦛'],[/jirafa|okapi/,'🦒'],[/cebra/,'🦓'],[/caballo|poni|burro|mula|onagro|kiang|asno/,'🐎'],[/camello|dromedario/,'🐫'],[/llama|alpaca|guanaco|vicuna/,'🦙'],[/bisonte/,'🦬'],[/bufalo|yak|gaur|banteng|buey|kouprey|tamarao/,'🐃'],[/vaca|toro|cebu/,'🐄'],[/jabali|facoquero|pecari/,'🐗'],[/cerdo/,'🐖'],[/cabra|ibice|rebeco|muflon|borrego|argali|urial|arrui|tur del/,'🐐'],[/oveja/,'🐑'],[/ciervo|alce|reno|wapiti|gamo|corzo|gacela|antilope|impala|kudu|orix|venado|taruca|corzuela|barasinga|eland|duiker/,'🦌'],
+ [/canguro|ualabi|ualaru|pademelon/,'🦘'],[/conejo|liebre|teporingo/,'🐇'],[/raton|topillo|lemming|hamster|jerbo|gerbillo|campanol/,'🐁'],[/rata/,'🐀'],[/ardilla|marmota|perrito de la pradera/,'🐿️'],[/erizo europeo|erizo orejudo|erizo de vientre|erizo del desierto|puercoespin|equidna/,'🦔'],[/nutria|chungungo/,'🦦'],[/mofeta|zorrillo/,'🦨'],[/tejon|gloton/,'🦡'],[/perezoso/,'🦥'],[/castor|capibara|coipo/,'🦫'],[/mapache|coati/,'🦝'],[/colibri|zunzuncito/,'🐦']];
 const POR_CLASE = { 'perro doméstico':'🐕','mamífero':'🐾','reptil':'🦎','anfibio':'🐸','ave que no vuela':'🐦','invertebrado terrestre':'🐛','ave rapaz':'🦅','ave rapaz nocturna':'🦉','ave':'🐦','murciélago':'🦇','insecto':'🐝','animal planeador':'🪂','pez cartilaginoso':'🦈','pez':'🐟','mamífero marino':'🐋','reptil marino':'🐢','ave marina que no vuela':'🐧','molusco':'🐚','crustáceo':'🦀','invertebrado marino':'🪼' };
-const plano = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-function emoji(a) { const k = plano(a.nombre); for (const [re, e] of EMOJI) if (re.test(k)) return e; return POR_CLASE[a.clase] || '🐾'; }
+const plano = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+function emoji(a) { const k = plano(a.nombre) + ' '; for (const [re, e] of EMOJI) if (re.test(k)) return e; return POR_CLASE[a.clase] || '🐾'; }
 const num = (x, d = 0) => x.toLocaleString('es-HN', { minimumFractionDigits: d, maximumFractionDigits: d });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+const arenaElegida = () => document.querySelector('input[name="arena"]:checked').value;
 
-function limites() {
-  const marcados = [...document.querySelectorAll('.tipos input:checked')].map(i => i.value);
-  const max = Math.max(2, marcados.reduce((s, t) => s + (porTipo[t] || 0), 0) || totalLista);
-  for (const el of [$('n'), $('nr')]) { el.max = max; if (+el.value > max) el.value = max; }
+// ---- cupos por tipo: el total es la suma
+function cupos() { return Object.fromEntries(TIPOS.map(t => [t, Math.min(maximos[t] || 0, Math.max(0, Math.floor(+$('c-' + t).value || 0)))])); }
+function pintarTotal() { const c = cupos(), total = TIPOS.reduce((s, t) => s + c[t], 0); $('total').textContent = num(total); if (!modoDuelo) $('iniciar').disabled = total < 2 || !!st?.corriendo; return total; }
+function repartir(total) {                                   // reparto proporcional a lo disponible, exacto
+  const M = TIPOS.reduce((s, t) => s + maximos[t], 0); total = Math.min(total, M);
+  const crudo = TIPOS.map(t => total * maximos[t] / M), base = crudo.map(Math.floor);
+  let falta = total - base.reduce((a, b) => a + b, 0);
+  crudo.map((x, i) => [x - base[i], i]).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (falta-- > 0) base[i]++; });
+  TIPOS.forEach((t, i) => { $('c-' + t).value = base[i]; $('r-' + t).value = base[i]; }); pintarTotal();
 }
-$('nr').addEventListener('input', () => $('n').value = $('nr').value);
-$('n').addEventListener('input', () => $('nr').value = $('n').value);
-document.querySelectorAll('.tipos input').forEach(i => i.addEventListener('change', limites));
+TIPOS.forEach(t => {
+  $('r-' + t).addEventListener('input', () => { $('c-' + t).value = $('r-' + t).value; pintarTotal(); });
+  $('c-' + t).addEventListener('input', () => { $('r-' + t).value = $('c-' + t).value; pintarTotal(); });
+  $('c-' + t).addEventListener('change', () => { $('c-' + t).value = cupos()[t]; $('r-' + t).value = $('c-' + t).value; pintarTotal(); });
+});
+document.querySelectorAll('.atajos button').forEach(b => b.addEventListener('click', () => repartir(b.dataset.total === 'todos' ? Infinity : +b.dataset.total)));
 document.querySelectorAll('input[name="arena"]').forEach(i => i.addEventListener('change', () => document.body.dataset.arena = i.value));
 
-function aviso(texto) { $('aviso').hidden = !texto; $('aviso').textContent = texto || ''; }
-function ocupado(si) { $('iniciar').disabled = si; $('detener').disabled = !si; }
-function ficha(pre, a, racha) {
-  $(pre + 'e').textContent = emoji(a); $(pre + 'n').textContent = a.nombre; $(pre + 'c').textContent = `${a.clase} · ${a.tipo}`;
-  if (pre === 'c') $('cr').textContent = racha ? `${num(racha)} ${racha === 1 ? 'victoria seguida' : 'victorias seguidas'}` : 'recién coronado';
+// ---- pestañas
+function pestana(duelo) {
+  modoDuelo = duelo; $('tab-torneo').setAttribute('aria-selected', !duelo); $('tab-duelo').setAttribute('aria-selected', duelo);
+  $('bloque-cupos').hidden = duelo; $('bloque-elige-a').hidden = $('bloque-elige-b').hidden = !duelo; $('op-sorteo').hidden = duelo;
+  document.querySelectorAll('.solo-torneo').forEach(e => e.hidden = duelo); $('detener').hidden = duelo;
+  if (duelo && arenaElegida() === 'sorteo') document.querySelector('input[name="arena"][value="tierra"]').click();
+  $('iniciar').textContent = duelo ? '¡A pelear!' : 'Iniciar torneo'; $('iniciar').disabled = false; if (!duelo) pintarTotal();
+  $('rol-izq').textContent = duelo ? 'Animal 1' : 'Campeón'; $('rol-der').textContent = duelo ? 'Animal 2' : 'Retador';
+  $('f-izq').classList.toggle('gana', !duelo); $('f-der').classList.remove('gana', 'caido'); $('f-izq').classList.remove('caido');
+  $('tres').hidden = true; $('m-peleas-t').textContent = duelo ? 'Peleas individuales' : 'Peleas';
 }
+$('tab-torneo').addEventListener('click', () => pestana(false)); $('tab-duelo').addEventListener('click', () => pestana(true));
+
+function aviso(texto) { $('aviso').hidden = !texto; $('aviso').textContent = texto || ''; }
+function ocupado(si) { if (st) st.corriendo = si; $('iniciar').disabled = si; $('detener').disabled = !si; }
+function ficha(pre, a, pie) { $(pre + 'e').textContent = emoji(a); $(pre + 'n').textContent = a.nombre; $(pre + 'c').textContent = `${a.clase} · ${a.tipo}`; $(pre + 'r').textContent = pie || ' '; }
 function fila(ul, html, tope) { const li = document.createElement('li'); li.innerHTML = html; ul.prepend(li); while (ul.children.length > tope) ul.lastChild.remove(); }
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+const rachaTxt = r => r ? `${num(r)} ${r === 1 ? 'victoria seguida' : 'victorias seguidas'}` : 'recién coronado';
+
+function velocidad(ms, decisiones, totalMs, totalDecisiones) {
+  $('m-ultima').innerHTML = `${num(ms)}<small>ms</small>`;
+  const d = totalMs / totalDecisiones; $('m-dec').innerHTML = `${num(d, d < 10 ? 1 : 0)}<small>ms</small>`;
+  $('m-dps').textContent = num(totalDecisiones / (totalMs / 1000));
+  return decisiones === 1 ? 'una pelea decidida en esa llamada' : `${decisiones} decisiones en una sola llamada`;
+}
 
 function pintar(ev) {
   if (ev.t === 'inicio') {
-    st = { n: ev.n, preguntas: 0, ms: 0, modo: ev.modo };
-    ficha('c', ev.campeon, 0); $('cr').textContent = 'abre el combate';
-    $('m-peleas').innerHTML = `0<small>/ ${num(ev.n - 1)}</small>`;
+    st = { n: ev.n, preguntas: 0, ms: 0, modo: ev.modo, azar: ev.azar, sorpresas: 0, corriendo: true };
+    ficha('c', ev.campeon, 'abre el combate'); $('m-peleas').innerHTML = `0<small>/ ${num(ev.n - 1)}</small>`;
   } else if (ev.t === 'llamada') {
     st.preguntas += ev.preguntas; st.ms = ev.ms_jev;
-    $('m-ultima').innerHTML = `${num(ev.ms)}<small>ms</small>`;
-    $('m-ultima-s').textContent = ev.preguntas === 1 ? 'una pelea decidida en esa llamada' : `${ev.preguntas} peleas decididas en una sola llamada`;
-    $('m-dec').innerHTML = `${num(st.ms / st.preguntas, st.ms / st.preguntas < 10 ? 1 : 0)}<small>ms</small>`;
-    $('m-dps').textContent = num(st.preguntas / (st.ms / 1000), 0);
-    $('m-dps-s').textContent = `${num(st.preguntas)} decisiones pedidas a Jev`;
+    $('m-ultima-s').textContent = velocidad(ev.ms, ev.preguntas, st.ms, st.preguntas);
+    $('m-dec-s').textContent = 'promedio de todo el torneo'; $('m-dps-s').textContent = `${num(st.preguntas)} decisiones pedidas a Jev`;
     $('m-llam').textContent = num(ev.llamadas); $('m-tok').textContent = `${num(ev.tokens)} tokens · ${ev.modelo || ''}`;
     $('m-costo').innerHTML = `<small>US$</small> ${num(ev.tokens * PRECIO, 4)}`;
   } else if (ev.t === 'pelea') {
-    const cae = ev.destrona;
-    ficha('r', cae ? ev.ficha_campeon : ev.ficha_retador);
-    $('rrol').textContent = cae ? 'Destronado' : 'Retador'; $('rficha').classList.toggle('caido', cae);
+    const cae = ev.destrona; if (ev.sorpresa) st.sorpresas++;
+    ficha('r', cae ? ev.ficha_campeon : ev.ficha_retador); $('rol-der').textContent = cae ? 'Destronado' : 'Retador'; $('f-der').classList.toggle('caido', cae);
     $('lugar').textContent = LUGAR[ev.arena] || ''; $('barra').style.width = (ev.prob_ganador * 100) + '%';
     $('veredicto').innerHTML = `Jev: <b>${esc(ev.ganador)}</b> con ${num(ev.prob_ganador, 2)}` + (ev.sorpresa ? ' <span class="sorpresa">¡sorpresa!</span>' : '');
-    const p = `<span class="p">${ICONO[ev.arena] || ''} ${num(ev.prob_ganador, 2)}</span>`;
-    fila($('peleas'), `<span class="num">#${ev.pelea}</span><span>${esc(ev.campeon)} vs ${esc(ev.retador)} → <b>${esc(ev.ganador)}</b>${ev.sorpresa ? ' <span class="sorpresa">sorpresa</span>' : ''}</span>${p}`, 60);
-    if (ev.destrona) {
-      fila($('tronos'), `<span class="num">#${ev.pelea}</span><span>${emoji(ev.ficha_retador)} <b>${esc(ev.retador)}</b> destrona a ${esc(ev.campeon)}${ev.sorpresa ? ' <span class="sorpresa">¡sorpresa!</span>' : ''}</span>${p}`, 400);
-      ficha('c', ev.ficha_retador, 0);
-    } else ficha('c', ev.ficha_campeon, ev.racha);
+    const p = `<span class="p">${ICONO[ev.arena] || ''} ${num(ev.prob_ganador, 2)}</span>`, sor = ev.sorpresa ? ' <span class="sorpresa">sorpresa</span>' : '';
+    fila($('peleas'), `<span class="num">#${ev.pelea}</span><span>${esc(ev.campeon)} vs ${esc(ev.retador)} → <b>${esc(ev.ganador)}</b>${sor}</span>${p}`, 60);
+    if (cae) { fila($('tronos'), `<span class="num">#${ev.pelea}</span><span>${emoji(ev.ficha_retador)} <b>${esc(ev.retador)}</b> destrona a ${esc(ev.campeon)}${sor}</span>${p}`, 400); ficha('c', ev.ficha_retador, rachaTxt(0)); }
+    else ficha('c', ev.ficha_campeon, rachaTxt(ev.racha));
     $('m-peleas').innerHTML = `${num(ev.pelea)}<small>/ ${num(st.n - 1)}</small>`; $('prog').style.width = (ev.pelea / (st.n - 1) * 100) + '%';
     $('m-tiempo').textContent = `${num((performance.now() - t0) / 1000, 1)} s de reloj`;
   } else if (ev.t === 'fin') {
-    ocupado(false); fuente && fuente.close();
-    const dec = st.preguntas ? st.ms / st.preguntas : 0, f = $('final');
-    const li = a => a.map(x => `<li>${x}</li>`).join('');
+    ocupado(false); pintarTotal();
+    const dec = st.preguntas ? st.ms / st.preguntas : 0, f = $('final'), li = a => a.map(x => `<li>${x}</li>`).join('');
     f.hidden = false; f.innerHTML = `<h3>${ev.cancelado ? '⏹️ Torneo detenido — iba ganando' : '🏆 Campeón:'} ${emoji(ev.campeon)} ${esc(ev.campeon.nombre)}</h3>
-      <div>${num(ev.peleas)} peleas decididas por Jev en <b>${num(ev.segundos, 1)} s</b> con ${num(ev.llamadas)} llamadas · <b>${num(dec, dec < 10 ? 1 : 0)} ms por decisión</b> · ${num(ev.tokens)} tokens · US$ ${num(ev.costo, 4)} · semilla ${ev.semilla}</div>
+      <div>${num(ev.peleas)} peleas decididas por Jev en <b>${num(ev.segundos, 1)} s</b> con ${num(ev.llamadas)} llamadas · <b>${num(dec, dec < 10 ? 1 : 0)} ms por decisión</b> · ${num(ev.tokens)} tokens · US$ ${num(ev.costo, 4)} · semilla ${ev.semilla} · resultado: ${st.azar ? 'con azar' : 'gana el favorito'}</div>
       <div class="cols"><div><span class="t">Rachas más largas (${ev.campeones} campeones en total)</span><ol>${li(ev.reinados.map(r => `${esc(r.nombre)} — ${num(r.victorias)} victorias`))}</ol></div>
       <div><span class="t">Peleas más cerradas</span><ul>${li(ev.cerradas.map(p => `${esc(p.campeon)} vs ${esc(p.retador)} → ${esc(p.ganador)} (${num(p.prob_ganador, 2)})`))}</ul></div>
-      ${ev.sorpresas.length ? `<div><span class="t">Sorpresas</span><ul>${li(ev.sorpresas.map(p => `#${p.pelea} ${esc(p.ganador)} venció con solo ${num(p.prob_ganador, 2)}`))}</ul></div>` : ''}</div>
+      ${ev.sorpresas.length ? `<div><span class="t">Sorpresas (${num(st.sorpresas)} en total; se listan las primeras ${ev.sorpresas.length})</span><small class="nota" style="max-width:none">No es que Jev se equivoque: jugaste «Con azar». Jev dio la probabilidad y el juego sorteó el resultado con ella; ganó quien tenía menos de 0.50.</small><ul>${li(ev.sorpresas.map(p => `#${p.pelea} ${esc(p.ganador)} venció con solo ${num(p.prob_ganador, 2)}`))}</ul></div>` : ''}</div>
       ${ev.archivo ? `<p><span class="t">Detalle guardado en</span><code>${esc(ev.archivo)}</code></p>` : ''}`;
-  } else if (ev.t === 'error') { ocupado(false); fuente && fuente.close(); aviso(ev.mensaje); }
+  } else if (ev.t === 'error') { ocupado(false); pintarTotal(); aviso(ev.mensaje); }
 }
 // Las peleas llegan en ráfagas de hasta 50; se pintan unas pocas por cuadro para que se alcance a ver.
 function cuadro() { let k = st && st.modo === 'una' ? 40 : 5; while (k-- && cola.length) pintar(cola.shift()); requestAnimationFrame(cuadro); }
@@ -219,25 +257,60 @@ async function orden(ruta, cuerpo) {
   const r = await fetch(ruta, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Torneo-Token': TOKEN }, body: JSON.stringify(cuerpo || {}) });
   const d = await r.json(); if (!r.ok) throw new Error(d.error || 'No se pudo'); return d;
 }
-$('iniciar').addEventListener('click', async () => {
-  const tipos = [...document.querySelectorAll('.tipos input:checked')].map(i => i.value);
-  if (!tipos.length) return aviso('Marca al menos un tipo de animal.');
-  aviso(''); ocupado(true); cola = []; st = null; t0 = performance.now(); fuente && fuente.close();
-  $('final').hidden = true; $('tronos').innerHTML = ''; $('peleas').innerHTML = ''; $('prog').style.width = 0; $('barra').style.width = 0; $('rrol').textContent = 'Retador'; $('rficha').classList.remove('caido');
-  for (const id of ['m-ultima','m-dec','m-dps','m-peleas','m-llam','m-costo']) $(id).textContent = '—';
+
+async function torneo() {
+  if (pintarTotal() < 2) return aviso('Hacen falta al menos 2 animales en total.');
+  aviso(''); cola = []; st = { corriendo: true }; ocupado(true); t0 = performance.now(); fuente && fuente.close();
+  $('final').hidden = true; $('tres').hidden = true; $('tronos').innerHTML = ''; $('peleas').innerHTML = ''; $('prog').style.width = 0; $('barra').style.width = 0;
+  $('rol-izq').textContent = 'Campeón'; $('rol-der').textContent = 'Retador'; $('f-izq').classList.add('gana'); $('f-izq').classList.remove('caido'); $('f-der').classList.remove('gana', 'caido');
+  for (const id of ['m-ultima', 'm-dec', 'm-dps', 'm-peleas', 'm-llam', 'm-costo']) $(id).textContent = '—';
   try {
-    const { id } = await orden('/api/iniciar', { n: +$('n').value, arena: document.querySelector('input[name="arena"]:checked').value,
-      modo: document.querySelector('input[name="modo"]:checked').value, azar: !!document.querySelector('input[name="azar"]:checked').value, tipos, semilla: $('semilla').value.trim() || null });
-    fuente = new EventSource(`/api/eventos?id=${id}&token=${encodeURIComponent(TOKEN)}`);
-    const flujo = fuente;
-    flujo.onmessage = e => {
-      const ev = JSON.parse(e.data); cola.push(ev);
-      if (ev.t === 'fin' || ev.t === 'error') flujo.close();  // al recibirlo, no al pintarlo: si no, el navegador reconecta
-    };
-  } catch (error) { ocupado(false); aviso(error.message); }
-});
+    const { id } = await orden('/api/iniciar', { por_tipo: cupos(), arena: arenaElegida(), modo: document.querySelector('input[name="modo"]:checked').value,
+      azar: !!document.querySelector('input[name="azar"]:checked').value, semilla: $('semilla').value.trim() || null });
+    const flujo = fuente = new EventSource(`/api/eventos?id=${id}&token=${encodeURIComponent(TOKEN)}`);
+    flujo.onmessage = e => { const ev = JSON.parse(e.data); cola.push(ev); if (ev.t === 'fin' || ev.t === 'error') flujo.close(); };  // al recibirlo: si no, el navegador reconecta
+  } catch (error) { ocupado(false); pintarTotal(); aviso(error.message); }
+}
+
+// ---- pelea individual
+function resolver(texto) {                                  // nombre exacto, o la única coincidencia
+  const k = plano(texto); if (!k) return null; if (indice.has(k)) return indice.get(k);
+  const c = animales.filter(a => plano(a.nombre).includes(k)); return c.length === 1 ? c[0] : null;
+}
+function alAzar(id) { $(id).value = animales[Math.floor(Math.random() * animales.length)].nombre; }
+$('azar-a').addEventListener('click', () => alAzar('animal-a')); $('azar-b').addEventListener('click', () => alAzar('animal-b'));
+
+async function duelo() {
+  const a = resolver($('animal-a').value), b = resolver($('animal-b').value);
+  if (!a || !b) return aviso(`No encuentro «${!a ? $('animal-a').value : $('animal-b').value}» en la lista. Elige una de las sugerencias.`);
+  if (a === b) return aviso('Elige dos animales distintos.');
+  aviso(''); $('iniciar').disabled = true; $('animal-a').value = a.nombre; $('animal-b').value = b.nombre;
+  ficha('c', a); ficha('r', b); $('f-izq').classList.remove('gana', 'caido'); $('f-der').classList.remove('gana', 'caido'); $('veredicto').textContent = 'Preguntando a Jev…'; $('barra').style.width = 0; $('lugar').textContent = LUGAR[arenaElegida()]; $('cr').textContent = $('rr').textContent = '\u00a0';
+  try {
+    const d = await orden('/api/duelo', { a: a.nombre, b: b.nombre }), arena = arenaElegida(), v = d.arenas[arena], ganaA = v.ganador === a.nombre;
+    $('f-izq').classList.toggle('gana', ganaA); $('f-izq').classList.toggle('caido', !ganaA); $('f-der').classList.toggle('gana', !ganaA); $('f-der').classList.toggle('caido', ganaA);
+    $(ganaA ? 'cr' : 'rr').textContent = 'gana'; $('lugar').textContent = LUGAR[arena]; $('barra').style.width = (v.prob_ganador * 100) + '%';
+    $('veredicto').innerHTML = `Jev: <b>${esc(v.ganador)}</b> con ${num(v.prob_ganador, 2)}` + (v.prob_ganador < 0.6 ? '<br><small>casi un empate</small>' : '');
+    $('tres').hidden = false; $('tres').innerHTML = Object.entries(d.arenas).map(([k, x]) => `<div class="panel ${k === arena ? 'sel' : ''}"><span class="t">${ICONO[k]} ${NOMBRE_ARENA[k]}</span><b>${esc(x.ganador)}</b><small>probabilidad ${num(x.prob_ganador, 2)}</small></div>`).join('');
+    duelos.n++; duelos.tokens += d.tokens;
+    $('m-ultima-s').textContent = velocidad(d.ms, d.preguntas, d.ms, d.preguntas); $('m-dec-s').textContent = '3 lugares × 2 órdenes, a la vez';
+    $('m-dps-s').textContent = 'en esa llamada'; $('m-peleas').textContent = num(duelos.n); $('prog').style.width = 0;
+    $('m-llam').textContent = num(duelos.n); $('m-tok').textContent = `${num(d.tokens)} tokens · ${d.modelo || ''}`;
+    $('m-costo').innerHTML = `<small>US$</small> ${num(duelos.tokens * PRECIO, 5)}`; $('m-tiempo').textContent = 'acumulado de peleas individuales';
+    fila($('peleas'), `<span class="num">🥊</span><span>${esc(a.nombre)} vs ${esc(b.nombre)} → ${Object.entries(d.arenas).map(([k, x]) => `${ICONO[k]} <b>${esc(x.ganador)}</b>`).join(' · ')}</span><span class="p">${num(d.ms)} ms</span>`, 60);
+  } catch (error) { aviso(error.message); $('veredicto').innerHTML = '&nbsp;'; }
+  $('iniciar').disabled = false;
+}
+$('iniciar').addEventListener('click', () => modoDuelo ? duelo() : torneo());
+['animal-a', 'animal-b'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') duelo(); }));
 $('detener').addEventListener('click', () => orden('/api/detener').catch(e => aviso(e.message)));
-fetch('/api/meta').then(r => r.json()).then(m => { totalLista = m.total; porTipo = m.por_tipo; for (const t in porTipo) $('c-' + t).textContent = `(${porTipo[t]})`; limites(); });
+
+fetch('/api/meta').then(r => r.json()).then(m => {
+  maximos = m.por_tipo; animales = m.animales; animales.forEach(a => indice.set(plano(a.nombre), a));
+  $('lista-animales').innerHTML = animales.map(a => `<option value="${esc(a.nombre)}">${esc(a.clase)} · ${a.tipo}</option>`).join('');
+  TIPOS.forEach(t => { $('r-' + t).max = $('c-' + t).max = maximos[t]; $('m-' + t).textContent = `de ${num(maximos[t])}`; });
+  repartir(1000);
+});
 </script>
 </body>
 </html>

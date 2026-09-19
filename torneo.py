@@ -5,6 +5,7 @@
   python3 torneo.py --n 300 --arena agua     # tierra | agua | aire | sorteo
   python3 torneo.py --semilla 7 --azar       # sorteo repetible; resultado sorteado con la probabilidad
   python3 torneo.py --modo una --n 30        # una llamada por pelea, para ver la latencia real
+  python3 torneo.py --terrestres 800 --voladores 700 --marinos 500   # cupo por tipo: total 2,000
 """
 import argparse
 
@@ -19,10 +20,15 @@ def main():
     parser.add_argument("--azar", action="store_true", help="sortear cada resultado según la probabilidad")
     parser.add_argument("--semilla", type=int, help="fija el sorteo para poder repetirlo")
     parser.add_argument("--tipos", help="terrestre, volador, marino (separados por coma)")
+    for tipo in ("terrestres", "voladores", "marinos"):
+        parser.add_argument(f"--{tipo}", type=int, help=f"cupo de {tipo}; si das algún cupo, el total es la suma")
     args = parser.parse_args()
     tipos = [t.strip() for t in args.tipos.split(",")] if args.tipos else None
+    cupos = {"terrestre": args.terrestres, "volador": args.voladores, "marino": args.marinos}
+    por_tipo = {t: c or 0 for t, c in cupos.items()} if any(c is not None for c in cupos.values()) else None
     try:
-        for ev in motor.torneo(motor.cargar_animales(), args.n, args.arena, args.modo, args.azar, args.semilla, tipos):
+        for ev in motor.torneo(motor.cargar_animales(), args.n, args.arena, args.modo, args.azar, args.semilla, tipos,
+                               por_tipo=por_tipo):
             if ev["t"] == "inicio":
                 print(f"TORNEO · {ev['n']} animales · arena {ev['arena']} · semilla {ev['semilla']}\n"
                       f"Abre el combate: {ev['campeon']['nombre']}\n")
