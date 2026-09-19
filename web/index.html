@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="torneo-token" content="__TOKEN__">
+<title>Torneo de animales · Jev</title>
+<style>
+  :root { --fondo:#0b1020; --panel:#131a2e; --borde:#232c47; --texto:#e8ecf8; --tenue:#8d97b5; --acento:#f59e0b; --ok:#34d399; --mal:#f87171; }
+  body[data-arena="agua"] { --acento:#38bdf8; } body[data-arena="aire"] { --acento:#a78bfa; } body[data-arena="sorteo"] { --acento:#34d399; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fondo); color:var(--texto); font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:22px 18px 60px; }
+  header h1 { margin:0; font-size:26px; letter-spacing:-.02em; } header h1 span { color:var(--acento); }
+  header p { margin:4px 0 18px; color:var(--tenue); }
+  .panel { background:var(--panel); border:1px solid var(--borde); border-radius:16px; padding:16px 18px; }
+  .controles { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px 22px; align-items:end; }
+  label.t, .t { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--tenue); margin-bottom:6px; }
+  .n { display:flex; gap:10px; align-items:center; } .n input[type=range] { flex:1; accent-color:var(--acento); }
+  input[type=number], input[type=text] { background:#0d1428; color:var(--texto); border:1px solid var(--borde); border-radius:10px; padding:8px 10px; font:inherit; width:96px; font-variant-numeric:tabular-nums; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; } .seg label { cursor:pointer; }
+  .seg input { position:absolute; opacity:0; pointer-events:none; }
+  .seg span { display:block; padding:8px 12px; border-radius:10px; border:1px solid var(--borde); background:#0d1428; color:var(--tenue); user-select:none; }
+  .seg input:checked + span { background:var(--acento); border-color:var(--acento); color:#0b1020; font-weight:650; }
+  .seg input:focus-visible + span { outline:2px solid var(--texto); outline-offset:2px; }
+  .tipos label { margin-right:14px; white-space:nowrap; color:var(--texto); } .tipos input { accent-color:var(--acento); }
+  .acciones { display:flex; gap:10px; }
+  button { font:inherit; font-weight:650; border:0; border-radius:12px; padding:11px 18px; cursor:pointer; }
+  #iniciar { background:var(--acento); color:#0b1020; flex:1; } #detener { background:#2a3352; color:var(--texto); }
+  button:disabled { opacity:.45; cursor:not-allowed; }
+  .ring { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch; margin-top:16px; }
+  .ficha { text-align:center; padding:18px 12px; min-height:188px; display:flex; flex-direction:column; justify-content:center; }
+  .ficha .rol { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--tenue); }
+  .ficha .emoji { font-size:64px; line-height:1.1; margin:4px 0; }
+  .ficha .nombre { font-size:21px; font-weight:700; letter-spacing:-.01em; } .ficha .clase { color:var(--tenue); font-size:13px; }
+  .ficha .racha { margin-top:8px; font-variant-numeric:tabular-nums; color:var(--acento); font-weight:650; }
+  .ficha.campeon { border-color:var(--acento); box-shadow:0 0 0 1px var(--acento) inset; }
+  .ficha.caido { opacity:.55; } .ficha.caido .emoji { filter:grayscale(1); }
+  .vs { display:flex; flex-direction:column; justify-content:center; align-items:center; min-width:170px; gap:8px; }
+  .vs .rotulo { font-size:26px; font-weight:800; color:var(--tenue); } .vs .lugar { font-size:13px; color:var(--tenue); }
+  .barra { width:100%; height:12px; background:#0d1428; border-radius:99px; overflow:hidden; border:1px solid var(--borde); }
+  .barra i { display:block; height:100%; width:0; background:var(--acento); transition:width .12s linear; }
+  .vs .veredicto { font-size:13px; text-align:center; min-height:38px; }
+  .metricas { display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:12px; margin-top:14px; }
+  .dato { padding:13px 15px; } .dato .v { font-size:28px; font-weight:750; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+  .dato .v small { font-size:14px; font-weight:600; color:var(--tenue); margin-left:3px; } .dato .s { color:var(--tenue); font-size:12.5px; min-height:18px; }
+  .dato.estrella { border-color:var(--acento); } .dato.estrella .v { color:var(--acento); }
+  .progreso { height:6px; background:#0d1428; border-radius:99px; margin-top:8px; overflow:hidden; } .progreso i { display:block; height:100%; width:0; background:var(--acento); }
+  .dos { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+  .lista { max-height:330px; overflow:auto; margin:0; padding:0; list-style:none; font-size:13.5px; }
+  .lista li { padding:6px 2px; border-bottom:1px solid var(--borde); display:flex; gap:8px; align-items:baseline; }
+  .lista .num { color:var(--tenue); font-variant-numeric:tabular-nums; min-width:44px; } .lista .p { margin-left:auto; color:var(--tenue); font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .lista .sorpresa { color:var(--mal); font-weight:650; } h2 { font-size:14px; margin:0 0 8px; letter-spacing:.02em; }
+  #final { margin-top:14px; border-color:var(--acento); } #final h3 { margin:0 0 4px; font-size:24px; } #final .cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:12px; }
+  #final ol, #final ul { margin:6px 0 0; padding-left:20px; font-size:13.5px; } #final code { color:var(--tenue); font-size:12px; word-break:break-all; }
+  #aviso { margin-top:12px; color:var(--mal); } .pie { margin-top:22px; color:var(--tenue); font-size:12.5px; }
+  @media (max-width:760px) { .ring { grid-template-columns:1fr; } .vs { min-width:0; } .dos { grid-template-columns:1fr; } .ficha { min-height:0; } }
+</style>
+</head>
+<body data-arena="tierra">
+<main>
+  <header>
+    <h1>Torneo de animales <span>· arbitrado por Jev</span></h1>
+    <p>El ganador se queda y enfrenta al siguiente hasta que quede uno solo. Cada pelea la decide Jev (TypeSafe System One); aquí se ve cuánto tarda.</p>
+  </header>
+
+  <section class="panel controles" aria-label="Configuración del torneo">
+    <div>
+      <label class="t" for="n">Animales en el torneo</label>
+      <div class="n"><input id="nr" type="range" min="2" max="1000" value="1000" aria-label="Animales"><input id="n" type="number" min="2" max="1000" value="1000"></div>
+    </div>
+    <div>
+      <span class="t">Dónde pelean</span>
+      <div class="seg" id="arena">
+        <label><input type="radio" name="arena" value="tierra" checked><span>🏜️ Tierra</span></label>
+        <label><input type="radio" name="arena" value="agua"><span>🌊 Agua</span></label>
+        <label><input type="radio" name="arena" value="aire"><span>☁️ Aire</span></label>
+        <label><input type="radio" name="arena" value="sorteo"><span>🎲 Sorteo por pelea</span></label>
+      </div>
+    </div>
+    <div>
+      <span class="t">Velocidad</span>
+      <div class="seg">
+        <label title="Una llamada a Jev decide hasta 50 peleas a la vez"><input type="radio" name="modo" value="turbo" checked><span>⚡ Turbo (por lotes)</span></label>
+        <label title="Una llamada a Jev por cada pelea: se ve la latencia real de cada respuesta"><input type="radio" name="modo" value="una"><span>👁️ Pelea por pelea</span></label>
+      </div>
+    </div>
+    <div>
+      <span class="t">Resultado de cada pelea</span>
+      <div class="seg">
+        <label title="Gana siempre el que Jev considera más probable"><input type="radio" name="azar" value="" checked><span>Gana el favorito</span></label>
+        <label title="Se sortea con la probabilidad que da Jev: a veces gana el débil"><input type="radio" name="azar" value="1"><span>Con azar</span></label>
+      </div>
+    </div>
+    <div class="tipos">
+      <span class="t">Quiénes participan</span>
+      <label><input type="checkbox" value="terrestre" checked> terrestres <small id="c-terrestre"></small></label>
+      <label><input type="checkbox" value="volador" checked> voladores <small id="c-volador"></small></label>
+      <label><input type="checkbox" value="marino" checked> marinos <small id="c-marino"></small></label>
+    </div>
+    <div>
+      <label class="t" for="semilla">Semilla del sorteo (vacía = al azar)</label>
+      <input id="semilla" type="text" inputmode="numeric" placeholder="p. ej. 7">
+    </div>
+    <div class="acciones"><button id="iniciar">Iniciar torneo</button><button id="detener" disabled>Detener</button></div>
+  </section>
+  <div id="aviso" role="alert" hidden></div>
+
+  <section class="ring" aria-live="off">
+    <div class="panel ficha campeon"><div class="rol">Campeón</div><div class="emoji" id="ce">🏟️</div><div class="nombre" id="cn">Esperando el sorteo</div><div class="clase" id="cc">&nbsp;</div><div class="racha" id="cr">&nbsp;</div></div>
+    <div class="vs"><span class="rotulo">VS</span><div class="lugar" id="lugar">&nbsp;</div><div class="barra"><i id="barra"></i></div><div class="veredicto" id="veredicto">&nbsp;</div></div>
+    <div class="panel ficha" id="rficha"><div class="rol" id="rrol">Retador</div><div class="emoji" id="re">❔</div><div class="nombre" id="rn">—</div><div class="clase" id="rc">&nbsp;</div><div class="racha">&nbsp;</div></div>
+  </section>
+
+  <section class="metricas">
+    <div class="panel dato estrella"><div class="t">Última respuesta de Jev</div><div class="v" id="m-ultima">—</div><div class="s" id="m-ultima-s">&nbsp;</div></div>
+    <div class="panel dato estrella"><div class="t">Tiempo por decisión</div><div class="v" id="m-dec">—</div><div class="s">promedio de todo el torneo</div></div>
+    <div class="panel dato"><div class="t">Decisiones por segundo</div><div class="v" id="m-dps">—</div><div class="s" id="m-dps-s">&nbsp;</div></div>
+    <div class="panel dato"><div class="t">Peleas</div><div class="v" id="m-peleas">—</div><div class="progreso"><i id="prog"></i></div></div>
+    <div class="panel dato"><div class="t">Llamadas a Jev</div><div class="v" id="m-llam">—</div><div class="s" id="m-tok">&nbsp;</div></div>
+    <div class="panel dato"><div class="t">Costo</div><div class="v" id="m-costo">—</div><div class="s" id="m-tiempo">&nbsp;</div></div>
+  </section>
+
+  <section class="panel" id="final" hidden></section>
+
+  <section class="dos">
+    <div class="panel"><h2>Cambios de campeón</h2><ul class="lista" id="tronos"></ul></div>
+    <div class="panel"><h2>Últimas peleas</h2><ul class="lista" id="peleas"></ul></div>
+  </section>
+  <p class="pie">Corre solo en esta Mac (127.0.0.1). La llave de TypeSafe se queda en el servidor local; cada torneo se guarda como CSV en la carpeta <code>resultados</code>.</p>
+</main>
+
+<script>
+const TOKEN = document.querySelector('meta[name="torneo-token"]').content;
+const $ = id => document.getElementById(id);
+const PRECIO = 0.042 / 1e6;
+const LUGAR = { tierra: '🏜️ en tierra', agua: '🌊 en el agua', aire: '☁️ en el aire' };
+const ICONO = { tierra: '🏜️', agua: '🌊', aire: '☁️' };
+let fuente = null, cola = [], st = null, t0 = 0, totalLista = 1000, porTipo = {};
+
+// Emoji por palabra clave del nombre; si no hay, por clase.
+const EMOJI = [[/tiburon|pintarroja|cazon/,'🦈'],[/ballena|cachalote|rorcual/,'🐋'],[/orca|delfin|marsopa|calderon|beluga|narval|vaquita|zifio/,'🐬'],[/foca|leon marino|lobo marino|morsa|elefante marino|oso marino|manati|dugongo/,'🦭'],
+ [/pulpo/,'🐙'],[/calamar|sepia|nautilo/,'🦑'],[/cangrejo|centolla|necora|buey de mar/,'🦀'],[/langosta espinosa|bogavante|cigala/,'🦞'],[/camaron|langostino|krill/,'🦐'],[/medusa|carabela|avispa de mar/,'🪼'],[/coral|gorgonia|anemona|esponja/,'🪸'],[/ostra|almeja|mejillon|vieira|berberecho|coquina/,'🦪'],[/caracola|caracol cono|lapa|abulon|bigaro/,'🐚'],[/pez globo|pez erizo/,'🐡'],[/pez payaso|pez mariposa|pez angel|pez cirujano|pez loro|pez mandarin|damisela/,'🐠'],
+ [/pinguino/,'🐧'],[/aguila|halcon|gavilan|azor|milano|cernicalo|buitre|condor|zopilote|quebrantahuesos|pigargo|busardo|caracara/,'🦅'],[/buho|lechuza|mochuelo|carabo|autillo|tecolote/,'🦉'],[/guacamayo|loro|cacatua|periquito|cotorra|agapornis|kea|lori|ninfa/,'🦜'],[/cisne/,'🦢'],[/pato|ganso|cerceta|eider|barnacla|porron/,'🦆'],[/flamenco/,'🦩'],[/pavo real/,'🦚'],[/pavo/,'🦃'],[/gallo/,'🐓'],[/gallina/,'🐔'],[/paloma|tortola/,'🕊️'],[/dodo/,'🦤'],
+ [/murcielago|zorro volador|noctulo/,'🦇'],[/abeja|abejorro|avispa|avispon/,'🐝'],[/mariposa|polilla|esfinge|morfo/,'🦋'],[/hormiga|termita/,'🐜'],[/mariquita/,'🐞'],[/escarabajo|ciervo volante|gorgojo/,'🪲'],[/grillo|saltamontes|langosta del desierto|cigarra|weta/,'🦗'],[/cucaracha/,'🪳'],[/mosquito/,'🦟'],[/mosca|tabano|moscarda/,'🪰'],[/arana|tarantula|viuda negra|solifugo|opilion/,'🕷️'],[/escorpion|vinagrillo/,'🦂'],[/caracol|babosa/,'🐌'],[/lombriz|gusano|sanguijuela|ciempies|milpies|escolopendra|oruga/,'🪱'],
+ [/cocodrilo|caiman|aligator|gavial|yacare/,'🐊'],[/tortuga|matamata/,'🐢'],[/serpiente|vibora|cobra|piton|boa|anaconda|mamba|taipan|cascabel|culebra|krait|boomslang|mocasin|barba amarilla|cabeza de cobre/,'🐍'],[/dragon de komodo|varano/,'🐉'],[/rana|sapo/,'🐸'],
+ [/leon africano|leon$/,'🦁'],[/tigre/,'🐯'],[/leopardo|jaguar|guepardo|pantera|puma|ocelote|serval|lince|caracal/,'🐆'],[/gato/,'🐈'],[/lobo|coyote|chacal|dingo|licaon|cuon/,'🐺'],[/zorro|fenec/,'🦊'],[/panda gigante/,'🐼'],[/oso polar/,'🐻‍❄️'],[/koala/,'🐨'],[/oso/,'🐻'],[/gorila/,'🦍'],[/orangutan/,'🦧'],[/mono|chimpance|bonobo|babuino|mandril|macaco|lemur|gibon|titi|tamarino|langur/,'🐒'],
+ [/elefante/,'🐘'],[/rinoceronte/,'🦏'],[/hipopotamo/,'🦛'],[/jirafa|okapi/,'🦒'],[/cebra/,'🦓'],[/caballo|poni|burro|mula|onagro|kiang/,'🐎'],[/camello|dromedario/,'🐫'],[/llama|alpaca|guanaco|vicuna/,'🦙'],[/bisonte/,'🦬'],[/bufalo|yak|gaur|banteng|nu |buey/,'🐃'],[/vaca|toro|cebu/,'🐄'],[/jabali|facoquero|pecari/,'🐗'],[/cerdo/,'🐖'],[/cabra|ibice|rebeco|muflon|borrego/,'🐐'],[/oveja/,'🐑'],[/ciervo|alce|reno|wapiti|gamo|corzo|gacela|antilope|impala|kudu|orix/,'🦌'],
+ [/canguro|ualabi/,'🦘'],[/conejo|liebre/,'🐇'],[/raton|topillo|lemming|hamster|jerbo/,'🐁'],[/rata/,'🐀'],[/ardilla|marmota|perrito de la pradera/,'🐿️'],[/erizo europeo|erizo orejudo|puercoespin|equidna/,'🦔'],[/nutria/,'🦦'],[/mofeta|zorrillo/,'🦨'],[/tejon|gloton/,'🦡'],[/perezoso/,'🦥'],[/castor|capibara|coipo/,'🦫'],[/mapache|coati/,'🦝'],[/avestruz|emu|casuario|nandu/,'🦤'],[/colibri|zunzuncito/,'🐦']];
+const POR_CLASE = { 'perro doméstico':'🐕','mamífero':'🐾','reptil':'🦎','anfibio':'🐸','ave que no vuela':'🐦','invertebrado terrestre':'🐛','ave rapaz':'🦅','ave rapaz nocturna':'🦉','ave':'🐦','murciélago':'🦇','insecto':'🐝','animal planeador':'🪂','pez cartilaginoso':'🦈','pez':'🐟','mamífero marino':'🐋','reptil marino':'🐢','ave marina que no vuela':'🐧','molusco':'🐚','crustáceo':'🦀','invertebrado marino':'🪼' };
+const plano = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+function emoji(a) { const k = plano(a.nombre); for (const [re, e] of EMOJI) if (re.test(k)) return e; return POR_CLASE[a.clase] || '🐾'; }
+const num = (x, d = 0) => x.toLocaleString('es-HN', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+function limites() {
+  const marcados = [...document.querySelectorAll('.tipos input:checked')].map(i => i.value);
+  const max = Math.max(2, marcados.reduce((s, t) => s + (porTipo[t] || 0), 0) || totalLista);
+  for (const el of [$('n'), $('nr')]) { el.max = max; if (+el.value > max) el.value = max; }
+}
+$('nr').addEventListener('input', () => $('n').value = $('nr').value);
+$('n').addEventListener('input', () => $('nr').value = $('n').value);
+document.querySelectorAll('.tipos input').forEach(i => i.addEventListener('change', limites));
+document.querySelectorAll('input[name="arena"]').forEach(i => i.addEventListener('change', () => document.body.dataset.arena = i.value));
+
+function aviso(texto) { $('aviso').hidden = !texto; $('aviso').textContent = texto || ''; }
+function ocupado(si) { $('iniciar').disabled = si; $('detener').disabled = !si; }
+function ficha(pre, a, racha) {
+  $(pre + 'e').textContent = emoji(a); $(pre + 'n').textContent = a.nombre; $(pre + 'c').textContent = `${a.clase} · ${a.tipo}`;
+  if (pre === 'c') $('cr').textContent = racha ? `${num(racha)} ${racha === 1 ? 'victoria seguida' : 'victorias seguidas'}` : 'recién coronado';
+}
+function fila(ul, html, tope) { const li = document.createElement('li'); li.innerHTML = html; ul.prepend(li); while (ul.children.length > tope) ul.lastChild.remove(); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+function pintar(ev) {
+  if (ev.t === 'inicio') {
+    st = { n: ev.n, preguntas: 0, ms: 0, modo: ev.modo };
+    ficha('c', ev.campeon, 0); $('cr').textContent = 'abre el combate';
+    $('m-peleas').innerHTML = `0<small>/ ${num(ev.n - 1)}</small>`;
+  } else if (ev.t === 'llamada') {
+    st.preguntas += ev.preguntas; st.ms = ev.ms_jev;
+    $('m-ultima').innerHTML = `${num(ev.ms)}<small>ms</small>`;
+    $('m-ultima-s').textContent = ev.preguntas === 1 ? 'una pelea decidida en esa llamada' : `${ev.preguntas} peleas decididas en una sola llamada`;
+    $('m-dec').innerHTML = `${num(st.ms / st.preguntas, st.ms / st.preguntas < 10 ? 1 : 0)}<small>ms</small>`;
+    $('m-dps').textContent = num(st.preguntas / (st.ms / 1000), 0);
+    $('m-dps-s').textContent = `${num(st.preguntas)} decisiones pedidas a Jev`;
+    $('m-llam').textContent = num(ev.llamadas); $('m-tok').textContent = `${num(ev.tokens)} tokens · ${ev.modelo || ''}`;
+    $('m-costo').innerHTML = `<small>US$</small> ${num(ev.tokens * PRECIO, 4)}`;
+  } else if (ev.t === 'pelea') {
+    const cae = ev.destrona;
+    ficha('r', cae ? ev.ficha_campeon : ev.ficha_retador);
+    $('rrol').textContent = cae ? 'Destronado' : 'Retador'; $('rficha').classList.toggle('caido', cae);
+    $('lugar').textContent = LUGAR[ev.arena] || ''; $('barra').style.width = (ev.prob_ganador * 100) + '%';
+    $('veredicto').innerHTML = `Jev: <b>${esc(ev.ganador)}</b> con ${num(ev.prob_ganador, 2)}` + (ev.sorpresa ? ' <span class="sorpresa">¡sorpresa!</span>' : '');
+    const p = `<span class="p">${ICONO[ev.arena] || ''} ${num(ev.prob_ganador, 2)}</span>`;
+    fila($('peleas'), `<span class="num">#${ev.pelea}</span><span>${esc(ev.campeon)} vs ${esc(ev.retador)} → <b>${esc(ev.ganador)}</b>${ev.sorpresa ? ' <span class="sorpresa">sorpresa</span>' : ''}</span>${p}`, 60);
+    if (ev.destrona) {
+      fila($('tronos'), `<span class="num">#${ev.pelea}</span><span>${emoji(ev.ficha_retador)} <b>${esc(ev.retador)}</b> destrona a ${esc(ev.campeon)}${ev.sorpresa ? ' <span class="sorpresa">¡sorpresa!</span>' : ''}</span>${p}`, 400);
+      ficha('c', ev.ficha_retador, 0);
+    } else ficha('c', ev.ficha_campeon, ev.racha);
+    $('m-peleas').innerHTML = `${num(ev.pelea)}<small>/ ${num(st.n - 1)}</small>`; $('prog').style.width = (ev.pelea / (st.n - 1) * 100) + '%';
+    $('m-tiempo').textContent = `${num((performance.now() - t0) / 1000, 1)} s de reloj`;
+  } else if (ev.t === 'fin') {
+    ocupado(false); fuente && fuente.close();
+    const dec = st.preguntas ? st.ms / st.preguntas : 0, f = $('final');
+    const li = a => a.map(x => `<li>${x}</li>`).join('');
+    f.hidden = false; f.innerHTML = `<h3>${ev.cancelado ? '⏹️ Torneo detenido — iba ganando' : '🏆 Campeón:'} ${emoji(ev.campeon)} ${esc(ev.campeon.nombre)}</h3>
+      <div>${num(ev.peleas)} peleas decididas por Jev en <b>${num(ev.segundos, 1)} s</b> con ${num(ev.llamadas)} llamadas · <b>${num(dec, dec < 10 ? 1 : 0)} ms por decisión</b> · ${num(ev.tokens)} tokens · US$ ${num(ev.costo, 4)} · semilla ${ev.semilla}</div>
+      <div class="cols"><div><span class="t">Rachas más largas (${ev.campeones} campeones en total)</span><ol>${li(ev.reinados.map(r => `${esc(r.nombre)} — ${num(r.victorias)} victorias`))}</ol></div>
+      <div><span class="t">Peleas más cerradas</span><ul>${li(ev.cerradas.map(p => `${esc(p.campeon)} vs ${esc(p.retador)} → ${esc(p.ganador)} (${num(p.prob_ganador, 2)})`))}</ul></div>
+      ${ev.sorpresas.length ? `<div><span class="t">Sorpresas</span><ul>${li(ev.sorpresas.map(p => `#${p.pelea} ${esc(p.ganador)} venció con solo ${num(p.prob_ganador, 2)}`))}</ul></div>` : ''}</div>
+      ${ev.archivo ? `<p><span class="t">Detalle guardado en</span><code>${esc(ev.archivo)}</code></p>` : ''}`;
+  } else if (ev.t === 'error') { ocupado(false); fuente && fuente.close(); aviso(ev.mensaje); }
+}
+// Las peleas llegan en ráfagas de hasta 50; se pintan unas pocas por cuadro para que se alcance a ver.
+function cuadro() { let k = st && st.modo === 'una' ? 40 : 5; while (k-- && cola.length) pintar(cola.shift()); requestAnimationFrame(cuadro); }
+requestAnimationFrame(cuadro);
+
+async function orden(ruta, cuerpo) {
+  const r = await fetch(ruta, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Torneo-Token': TOKEN }, body: JSON.stringify(cuerpo || {}) });
+  const d = await r.json(); if (!r.ok) throw new Error(d.error || 'No se pudo'); return d;
+}
+$('iniciar').addEventListener('click', async () => {
+  const tipos = [...document.querySelectorAll('.tipos input:checked')].map(i => i.value);
+  if (!tipos.length) return aviso('Marca al menos un tipo de animal.');
+  aviso(''); ocupado(true); cola = []; st = null; t0 = performance.now(); fuente && fuente.close();
+  $('final').hidden = true; $('tronos').innerHTML = ''; $('peleas').innerHTML = ''; $('prog').style.width = 0; $('barra').style.width = 0; $('rrol').textContent = 'Retador'; $('rficha').classList.remove('caido');
+  for (const id of ['m-ultima','m-dec','m-dps','m-peleas','m-llam','m-costo']) $(id).textContent = '—';
+  try {
+    const { id } = await orden('/api/iniciar', { n: +$('n').value, arena: document.querySelector('input[name="arena"]:checked').value,
+      modo: document.querySelector('input[name="modo"]:checked').value, azar: !!document.querySelector('input[name="azar"]:checked').value, tipos, semilla: $('semilla').value.trim() || null });
+    fuente = new EventSource(`/api/eventos?id=${id}&token=${encodeURIComponent(TOKEN)}`);
+    const flujo = fuente;
+    flujo.onmessage = e => {
+      const ev = JSON.parse(e.data); cola.push(ev);
+      if (ev.t === 'fin' || ev.t === 'error') flujo.close();  // al recibirlo, no al pintarlo: si no, el navegador reconecta
+    };
+  } catch (error) { ocupado(false); aviso(error.message); }
+});
+$('detener').addEventListener('click', () => orden('/api/detener').catch(e => aviso(e.message)));
+fetch('/api/meta').then(r => r.json()).then(m => { totalLista = m.total; porTipo = m.por_tipo; for (const t in porTipo) $('c-' + t).textContent = `(${porTipo[t]})`; limites(); });
+</script>
+</body>
+</html>

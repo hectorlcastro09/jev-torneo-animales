@@ -1,0 +1,1177 @@
+nombre,tipo,clase
+León africano,terrestre,mamífero
+Tigre de Bengala,terrestre,mamífero
+Tigre siberiano,terrestre,mamífero
+Tigre de Sumatra,terrestre,mamífero
+Leopardo africano,terrestre,mamífero
+Leopardo de las nieves,terrestre,mamífero
+Jaguar,terrestre,mamífero
+Puma,terrestre,mamífero
+Guepardo,terrestre,mamífero
+Pantera nebulosa,terrestre,mamífero
+Lince ibérico,terrestre,mamífero
+Lince rojo,terrestre,mamífero
+Lince canadiense,terrestre,mamífero
+Lince boreal,terrestre,mamífero
+Ocelote,terrestre,mamífero
+Margay,terrestre,mamífero
+Serval,terrestre,mamífero
+Caracal,terrestre,mamífero
+Gato montés europeo,terrestre,mamífero
+Gato doméstico,terrestre,mamífero
+Jaguarundi,terrestre,mamífero
+Gato de Pallas,terrestre,mamífero
+Gato pescador,terrestre,mamífero
+Gato de las arenas,terrestre,mamífero
+Tigrillo,terrestre,mamífero
+Lobo gris,terrestre,mamífero
+Lobo ártico,terrestre,mamífero
+Lobo ibérico,terrestre,mamífero
+Lobo mexicano,terrestre,mamífero
+Coyote,terrestre,mamífero
+Chacal dorado,terrestre,mamífero
+Chacal de lomo negro,terrestre,mamífero
+Dingo,terrestre,mamífero
+Licaón,terrestre,mamífero
+Cuón,terrestre,mamífero
+Zorro rojo,terrestre,mamífero
+Zorro ártico,terrestre,mamífero
+Fénec,terrestre,mamífero
+Zorro gris,terrestre,mamífero
+Zorro orejudo,terrestre,mamífero
+Lobo de crin,terrestre,mamífero
+Perro mapache,terrestre,mamífero
+Pastor alemán,terrestre,perro doméstico
+Rottweiler,terrestre,perro doméstico
+Dóberman,terrestre,perro doméstico
+Pitbull,terrestre,perro doméstico
+Chihuahua,terrestre,perro doméstico
+San bernardo,terrestre,perro doméstico
+Husky siberiano,terrestre,perro doméstico
+Gran danés,terrestre,perro doméstico
+Beagle,terrestre,perro doméstico
+Labrador retriever,terrestre,perro doméstico
+Mastín tibetano,terrestre,perro doméstico
+Galgo español,terrestre,perro doméstico
+Bulldog inglés,terrestre,perro doméstico
+Pastor belga malinois,terrestre,perro doméstico
+Border collie,terrestre,perro doméstico
+Dogo argentino,terrestre,perro doméstico
+Caniche,terrestre,perro doméstico
+Teckel,terrestre,perro doméstico
+Oso grizzly,terrestre,mamífero
+Oso polar,terrestre,mamífero
+Oso negro americano,terrestre,mamífero
+Oso pardo europeo,terrestre,mamífero
+Oso kodiak,terrestre,mamífero
+Panda gigante,terrestre,mamífero
+Oso de anteojos,terrestre,mamífero
+Oso malayo,terrestre,mamífero
+Oso bezudo,terrestre,mamífero
+Oso negro asiático,terrestre,mamífero
+Gorila de montaña,terrestre,mamífero
+Gorila occidental de llanura,terrestre,mamífero
+Chimpancé,terrestre,mamífero
+Bonobo,terrestre,mamífero
+Orangután de Borneo,terrestre,mamífero
+Orangután de Sumatra,terrestre,mamífero
+Gibón de manos blancas,terrestre,mamífero
+Siamang,terrestre,mamífero
+Mandril,terrestre,mamífero
+Dril,terrestre,mamífero
+Babuino oliva,terrestre,mamífero
+Babuino chacma,terrestre,mamífero
+Gelada,terrestre,mamífero
+Macaco japonés,terrestre,mamífero
+Macaco rhesus,terrestre,mamífero
+Macaco cangrejero,terrestre,mamífero
+Mono capuchino,terrestre,mamífero
+Mono aullador,terrestre,mamífero
+Mono araña,terrestre,mamífero
+Mono ardilla,terrestre,mamífero
+Mono lanudo,terrestre,mamífero
+Tití pigmeo,terrestre,mamífero
+Tití común,terrestre,mamífero
+Tamarino león dorado,terrestre,mamífero
+Tamarino emperador,terrestre,mamífero
+Uakari calvo,terrestre,mamífero
+Saki cariblanco,terrestre,mamífero
+Mono narigudo,terrestre,mamífero
+Langur gris,terrestre,mamífero
+Colobo blanco y negro,terrestre,mamífero
+Mono vervet,terrestre,mamífero
+Mono patas,terrestre,mamífero
+Cercopiteco de Brazza,terrestre,mamífero
+Lémur de cola anillada,terrestre,mamífero
+Lémur ratón,terrestre,mamífero
+Sifaca,terrestre,mamífero
+Indri,terrestre,mamífero
+Aye-aye,terrestre,mamífero
+Loris perezoso,terrestre,mamífero
+Gálago,terrestre,mamífero
+Tarsero,terrestre,mamífero
+Elefante africano de sabana,terrestre,mamífero
+Elefante africano de bosque,terrestre,mamífero
+Elefante asiático,terrestre,mamífero
+Rinoceronte blanco,terrestre,mamífero
+Rinoceronte negro,terrestre,mamífero
+Rinoceronte indio,terrestre,mamífero
+Rinoceronte de Java,terrestre,mamífero
+Rinoceronte de Sumatra,terrestre,mamífero
+Hipopótamo,terrestre,mamífero
+Hipopótamo pigmeo,terrestre,mamífero
+Caballo pura sangre,terrestre,mamífero
+Caballo percherón,terrestre,mamífero
+Caballo árabe,terrestre,mamífero
+Poni Shetland,terrestre,mamífero
+Burro,terrestre,mamífero
+Mula,terrestre,mamífero
+Cebra de llanura,terrestre,mamífero
+Cebra de Grévy,terrestre,mamífero
+Cebra de montaña,terrestre,mamífero
+Caballo de Przewalski,terrestre,mamífero
+Onagro,terrestre,mamífero
+Kiang,terrestre,mamífero
+Búfalo cafre,terrestre,mamífero
+Búfalo de agua,terrestre,mamífero
+Bisonte americano,terrestre,mamífero
+Bisonte europeo,terrestre,mamífero
+Yak,terrestre,mamífero
+Toro de lidia,terrestre,mamífero
+Vaca Holstein,terrestre,mamífero
+Cebú,terrestre,mamífero
+Gaur,terrestre,mamífero
+Banteng,terrestre,mamífero
+Buey almizclero,terrestre,mamífero
+Anoa,terrestre,mamífero
+Ñu azul,terrestre,mamífero
+Ñu negro,terrestre,mamífero
+Eland común,terrestre,mamífero
+Kudú mayor,terrestre,mamífero
+Kudú menor,terrestre,mamífero
+Órix del Cabo,terrestre,mamífero
+Órix de Arabia,terrestre,mamífero
+Adax,terrestre,mamífero
+Gacela de Thomson,terrestre,mamífero
+Gacela de Grant,terrestre,mamífero
+Gacela dorcas,terrestre,mamífero
+Impala,terrestre,mamífero
+Springbok,terrestre,mamífero
+Antílope sable,terrestre,mamífero
+Antílope ruano,terrestre,mamífero
+Nilgó,terrestre,mamífero
+Saiga,terrestre,mamífero
+Gerenuk,terrestre,mamífero
+Dik-dik,terrestre,mamífero
+Duiker azul,terrestre,mamífero
+Bongo,terrestre,mamífero
+Sitatunga,terrestre,mamífero
+Niala,terrestre,mamífero
+Topi,terrestre,mamífero
+Alcélafo,terrestre,mamífero
+Cobo de agua,terrestre,mamífero
+Cobo lechwe,terrestre,mamífero
+Redunca,terrestre,mamífero
+Antílope cervicapra,terrestre,mamífero
+Chirú,terrestre,mamífero
+Berrendo,terrestre,mamífero
+Cabra montés ibérica,terrestre,mamífero
+Cabra doméstica,terrestre,mamífero
+Íbice alpino,terrestre,mamífero
+Marjor,terrestre,mamífero
+Muflón,terrestre,mamífero
+Oveja merina,terrestre,mamífero
+Borrego cimarrón,terrestre,mamífero
+Cabra blanca de las Rocosas,terrestre,mamífero
+Rebeco,terrestre,mamífero
+Tahr del Himalaya,terrestre,mamífero
+Takín,terrestre,mamífero
+Goral,terrestre,mamífero
+Serau,terrestre,mamífero
+Ciervo rojo,terrestre,mamífero
+Ciervo de cola blanca,terrestre,mamífero
+Ciervo mulo,terrestre,mamífero
+Alce,terrestre,mamífero
+Reno,terrestre,mamífero
+Wapití,terrestre,mamífero
+Gamo,terrestre,mamífero
+Corzo,terrestre,mamífero
+Ciervo sika,terrestre,mamífero
+Muntíaco,terrestre,mamífero
+Pudú,terrestre,mamífero
+Ciervo de los pantanos,terrestre,mamífero
+Sambar,terrestre,mamífero
+Chital,terrestre,mamífero
+Ciervo almizclero,terrestre,mamífero
+Ciervo ratón,terrestre,mamífero
+Huemul,terrestre,mamífero
+Jirafa masái,terrestre,mamífero
+Jirafa reticulada,terrestre,mamífero
+Okapi,terrestre,mamífero
+Camello bactriano,terrestre,mamífero
+Dromedario,terrestre,mamífero
+Llama,terrestre,mamífero
+Alpaca,terrestre,mamífero
+Guanaco,terrestre,mamífero
+Vicuña,terrestre,mamífero
+Jabalí,terrestre,mamífero
+Cerdo doméstico,terrestre,mamífero
+Facóquero,terrestre,mamífero
+Pecarí de collar,terrestre,mamífero
+Pecarí labiado,terrestre,mamífero
+Babirusa,terrestre,mamífero
+Potamoquero rojo,terrestre,mamífero
+Hilóquero,terrestre,mamífero
+Tapir amazónico,terrestre,mamífero
+Tapir malayo,terrestre,mamífero
+Tapir centroamericano,terrestre,mamífero
+Tapir andino,terrestre,mamífero
+Oso hormiguero gigante,terrestre,mamífero
+Tamandúa,terrestre,mamífero
+Hormiguero sedoso,terrestre,mamífero
+Perezoso de tres dedos,terrestre,mamífero
+Perezoso de dos dedos,terrestre,mamífero
+Armadillo de nueve bandas,terrestre,mamífero
+Armadillo gigante,terrestre,mamífero
+Armadillo de tres bandas,terrestre,mamífero
+Pichiciego,terrestre,mamífero
+Pangolín gigante,terrestre,mamífero
+Pangolín chino,terrestre,mamífero
+Cerdo hormiguero,terrestre,mamífero
+Damán de roca,terrestre,mamífero
+Musaraña elefante,terrestre,mamífero
+Tenrec,terrestre,mamífero
+Solenodonte,terrestre,mamífero
+Erizo europeo,terrestre,mamífero
+Erizo orejudo,terrestre,mamífero
+Puercoespín norteamericano,terrestre,mamífero
+Puercoespín crestado,terrestre,mamífero
+Equidna,terrestre,mamífero
+Ornitorrinco,terrestre,mamífero
+Canguro rojo,terrestre,mamífero
+Canguro gris oriental,terrestre,mamífero
+Ualabí,terrestre,mamífero
+Canguro arborícola,terrestre,mamífero
+Koala,terrestre,mamífero
+Wombat,terrestre,mamífero
+Demonio de Tasmania,terrestre,mamífero
+Zarigüeya de Virginia,terrestre,mamífero
+Numbat,terrestre,mamífero
+Quokka,terrestre,mamífero
+Bandicut,terrestre,mamífero
+Bilby,terrestre,mamífero
+Cuol,terrestre,mamífero
+Cuscús,terrestre,mamífero
+Potorú,terrestre,mamífero
+Tejón europeo,terrestre,mamífero
+Tejón americano,terrestre,mamífero
+Tejón de la miel,terrestre,mamífero
+Glotón,terrestre,mamífero
+Nutria europea,terrestre,mamífero
+Nutria gigante,terrestre,mamífero
+Marta,terrestre,mamífero
+Marta cibelina,terrestre,mamífero
+Armiño,terrestre,mamífero
+Comadreja,terrestre,mamífero
+Hurón,terrestre,mamífero
+Visón americano,terrestre,mamífero
+Mofeta rayada,terrestre,mamífero
+Zorrillo manchado,terrestre,mamífero
+Taira,terrestre,mamífero
+Grisón,terrestre,mamífero
+Mapache,terrestre,mamífero
+Coatí,terrestre,mamífero
+Kinkajú,terrestre,mamífero
+Olingo,terrestre,mamífero
+Cacomixtle,terrestre,mamífero
+Panda rojo,terrestre,mamífero
+Mangosta enana,terrestre,mamífero
+Mangosta rayada,terrestre,mamífero
+Meloncillo,terrestre,mamífero
+Suricata,terrestre,mamífero
+Civeta africana,terrestre,mamífero
+Civeta de palmera,terrestre,mamífero
+Gineta,terrestre,mamífero
+Binturong,terrestre,mamífero
+Fosa,terrestre,mamífero
+Hiena manchada,terrestre,mamífero
+Hiena rayada,terrestre,mamífero
+Hiena parda,terrestre,mamífero
+Lobo de tierra,terrestre,mamífero
+Capibara,terrestre,mamífero
+Castor americano,terrestre,mamífero
+Castor europeo,terrestre,mamífero
+Rata parda,terrestre,mamífero
+Rata negra,terrestre,mamífero
+Ratón doméstico,terrestre,mamífero
+Ratón de campo,terrestre,mamífero
+Hámster dorado,terrestre,mamífero
+Cobaya,terrestre,mamífero
+Chinchilla,terrestre,mamífero
+Degú,terrestre,mamífero
+Ardilla roja,terrestre,mamífero
+Ardilla gris,terrestre,mamífero
+Ardilla listada,terrestre,mamífero
+Ardilla de tierra,terrestre,mamífero
+Marmota alpina,terrestre,mamífero
+Marmota canadiense,terrestre,mamífero
+Perrito de la pradera,terrestre,mamífero
+Lirón gris,terrestre,mamífero
+Lirón careto,terrestre,mamífero
+Jerbo,terrestre,mamífero
+Rata canguro,terrestre,mamífero
+Rata topo desnuda,terrestre,mamífero
+Tuza,terrestre,mamífero
+Paca,terrestre,mamífero
+Agutí,terrestre,mamífero
+Coipo,terrestre,mamífero
+Rata almizclera,terrestre,mamífero
+Vizcacha,terrestre,mamífero
+Mara patagónica,terrestre,mamífero
+Pacarana,terrestre,mamífero
+Lemming,terrestre,mamífero
+Topillo,terrestre,mamífero
+Hámster europeo,terrestre,mamífero
+Rata gigante de Gambia,terrestre,mamífero
+Conejo europeo,terrestre,mamífero
+Conejo de cola de algodón,terrestre,mamífero
+Liebre europea,terrestre,mamífero
+Liebre ártica,terrestre,mamífero
+Liebre americana,terrestre,mamífero
+Pika,terrestre,mamífero
+Topo europeo,terrestre,mamífero
+Topo de nariz estrellada,terrestre,mamífero
+Musaraña común,terrestre,mamífero
+Musaraña etrusca,terrestre,mamífero
+Desmán ibérico,terrestre,mamífero
+Cocodrilo del Nilo,terrestre,reptil
+Cocodrilo de agua salada,terrestre,reptil
+Cocodrilo americano,terrestre,reptil
+Cocodrilo del Orinoco,terrestre,reptil
+Caimán negro,terrestre,reptil
+Caimán de anteojos,terrestre,reptil
+Yacaré,terrestre,reptil
+Aligátor americano,terrestre,reptil
+Aligátor chino,terrestre,reptil
+Gavial,terrestre,reptil
+Falso gavial,terrestre,reptil
+Dragón de Komodo,terrestre,reptil
+Varano del Nilo,terrestre,reptil
+Varano acuático,terrestre,reptil
+Varano gigante australiano,terrestre,reptil
+Varano de garganta negra,terrestre,reptil
+Iguana verde,terrestre,reptil
+Iguana del desierto,terrestre,reptil
+Iguana rinoceronte,terrestre,reptil
+Iguana terrestre de Galápagos,terrestre,reptil
+Camaleón pantera,terrestre,reptil
+Camaleón de Jackson,terrestre,reptil
+Camaleón común,terrestre,reptil
+Camaleón de Parson,terrestre,reptil
+Gecko tokay,terrestre,reptil
+Gecko leopardo,terrestre,reptil
+Gecko crestado,terrestre,reptil
+Basilisco común,terrestre,reptil
+Monstruo de Gila,terrestre,reptil
+Lagarto de cuentas,terrestre,reptil
+Lagarto cornudo,terrestre,reptil
+Lagarto de collar,terrestre,reptil
+Lagartija ibérica,terrestre,reptil
+Lagarto ocelado,terrestre,reptil
+Eslizón de lengua azul,terrestre,reptil
+Tegu,terrestre,reptil
+Tuátara,terrestre,reptil
+Dragón barbudo,terrestre,reptil
+Diablo espinoso,terrestre,reptil
+Lagarto de gorguera,terrestre,reptil
+Lución,terrestre,reptil
+Anfisbena,terrestre,reptil
+Pitón reticulada,terrestre,reptil
+Pitón birmana,terrestre,reptil
+Pitón real,terrestre,reptil
+Pitón de roca africana,terrestre,reptil
+Pitón arborícola verde,terrestre,reptil
+Anaconda verde,terrestre,reptil
+Anaconda amarilla,terrestre,reptil
+Boa constrictora,terrestre,reptil
+Boa esmeralda,terrestre,reptil
+Boa arcoíris,terrestre,reptil
+Cobra real,terrestre,reptil
+Cobra india,terrestre,reptil
+Cobra escupidora,terrestre,reptil
+Cobra egipcia,terrestre,reptil
+Mamba negra,terrestre,reptil
+Mamba verde,terrestre,reptil
+Taipán del interior,terrestre,reptil
+Taipán costero,terrestre,reptil
+Serpiente tigre,terrestre,reptil
+Serpiente marrón oriental,terrestre,reptil
+Víbora de la muerte,terrestre,reptil
+Víbora de Gabón,terrestre,reptil
+Víbora bufadora,terrestre,reptil
+Víbora de Russell,terrestre,reptil
+Víbora áspid,terrestre,reptil
+Víbora hocicuda,terrestre,reptil
+Víbora cornuda,terrestre,reptil
+Cascabel diamantina,terrestre,reptil
+Cascabel tropical,terrestre,reptil
+Cascabel cornuda,terrestre,reptil
+Barba amarilla,terrestre,reptil
+Cascabel muda,terrestre,reptil
+Serpiente de coral,terrestre,reptil
+Mocasín de agua,terrestre,reptil
+Cabeza de cobre,terrestre,reptil
+Culebra de collar,terrestre,reptil
+Culebra bastarda,terrestre,reptil
+Serpiente rey,terrestre,reptil
+Serpiente del maíz,terrestre,reptil
+Serpiente toro,terrestre,reptil
+Serpiente látigo,terrestre,reptil
+Boomslang,terrestre,reptil
+Serpiente liana,terrestre,reptil
+Tortuga de Galápagos,terrestre,reptil
+Tortuga de Aldabra,terrestre,reptil
+Tortuga leopardo,terrestre,reptil
+Tortuga de espolones,terrestre,reptil
+Tortuga de caja,terrestre,reptil
+Tortuga mordedora,terrestre,reptil
+Tortuga caimán,terrestre,reptil
+Tortuga rusa,terrestre,reptil
+Tortuga mora,terrestre,reptil
+Tortuga de orejas rojas,terrestre,reptil
+Tortuga de caparazón blando,terrestre,reptil
+Matamata,terrestre,reptil
+Rana toro,terrestre,anfibio
+Rana dardo dorada,terrestre,anfibio
+Rana dardo azul,terrestre,anfibio
+Rana de ojos rojos,terrestre,anfibio
+Rana goliat,terrestre,anfibio
+Rana común,terrestre,anfibio
+Rana de cristal,terrestre,anfibio
+Rana cornuda,terrestre,anfibio
+Rana tomate,terrestre,anfibio
+Sapo común,terrestre,anfibio
+Sapo de caña,terrestre,anfibio
+Sapo partero,terrestre,anfibio
+Sapo de Surinam,terrestre,anfibio
+Sapo corredor,terrestre,anfibio
+Salamandra común,terrestre,anfibio
+Salamandra gigante china,terrestre,anfibio
+Salamandra tigre,terrestre,anfibio
+Tritón crestado,terrestre,anfibio
+Tritón alpino,terrestre,anfibio
+Gallipato,terrestre,anfibio
+Cecilia,terrestre,anfibio
+Avestruz,terrestre,ave que no vuela
+Emú,terrestre,ave que no vuela
+Casuario,terrestre,ave que no vuela
+Ñandú,terrestre,ave que no vuela
+Kiwi,terrestre,ave que no vuela
+Kakapo,terrestre,ave que no vuela
+Gallina,terrestre,ave que no vuela
+Gallo de pelea,terrestre,ave que no vuela
+Pavo doméstico,terrestre,ave que no vuela
+Pavo real,terrestre,ave que no vuela
+Correcaminos,terrestre,ave que no vuela
+Takahe,terrestre,ave que no vuela
+Weka,terrestre,ave que no vuela
+Hormiga roja de fuego,terrestre,invertebrado terrestre
+Hormiga bala,terrestre,invertebrado terrestre
+Hormiga marabunta,terrestre,invertebrado terrestre
+Hormiga cortadora de hojas,terrestre,invertebrado terrestre
+Hormiga carpintera,terrestre,invertebrado terrestre
+Hormiga tejedora,terrestre,invertebrado terrestre
+Termita,terrestre,invertebrado terrestre
+Escarabajo Hércules,terrestre,invertebrado terrestre
+Escarabajo rinoceronte,terrestre,invertebrado terrestre
+Escarabajo pelotero,terrestre,invertebrado terrestre
+Escarabajo bombardero,terrestre,invertebrado terrestre
+Escarabajo titán,terrestre,invertebrado terrestre
+Gorgojo,terrestre,invertebrado terrestre
+Cucaracha americana,terrestre,invertebrado terrestre
+Cucaracha de Madagascar,terrestre,invertebrado terrestre
+Grillo de campo,terrestre,invertebrado terrestre
+Grillo topo,terrestre,invertebrado terrestre
+Saltamontes verde,terrestre,invertebrado terrestre
+Weta gigante,terrestre,invertebrado terrestre
+Mantis religiosa,terrestre,invertebrado terrestre
+Mantis orquídea,terrestre,invertebrado terrestre
+Insecto palo,terrestre,invertebrado terrestre
+Insecto hoja,terrestre,invertebrado terrestre
+Tijereta,terrestre,invertebrado terrestre
+Pececillo de plata,terrestre,invertebrado terrestre
+Oruga procesionaria,terrestre,invertebrado terrestre
+Gusano de seda,terrestre,invertebrado terrestre
+Tarántula Goliat,terrestre,invertebrado terrestre
+Tarántula de rodillas rojas,terrestre,invertebrado terrestre
+Viuda negra,terrestre,invertebrado terrestre
+Araña violinista,terrestre,invertebrado terrestre
+Araña lobo,terrestre,invertebrado terrestre
+Araña saltarina,terrestre,invertebrado terrestre
+Araña errante brasileña,terrestre,invertebrado terrestre
+Araña de Sídney,terrestre,invertebrado terrestre
+Araña de jardín,terrestre,invertebrado terrestre
+Araña pavo real,terrestre,invertebrado terrestre
+Araña cangrejo,terrestre,invertebrado terrestre
+Araña cazadora gigante,terrestre,invertebrado terrestre
+Escorpión emperador,terrestre,invertebrado terrestre
+Escorpión amarillo,terrestre,invertebrado terrestre
+Escorpión de corteza,terrestre,invertebrado terrestre
+Escorpión de cola gruesa,terrestre,invertebrado terrestre
+Vinagrillo,terrestre,invertebrado terrestre
+Solífugo,terrestre,invertebrado terrestre
+Opilión,terrestre,invertebrado terrestre
+Ciempiés gigante,terrestre,invertebrado terrestre
+Escolopendra,terrestre,invertebrado terrestre
+Milpiés gigante,terrestre,invertebrado terrestre
+Caracol de jardín,terrestre,invertebrado terrestre
+Caracol gigante africano,terrestre,invertebrado terrestre
+Babosa leopardo,terrestre,invertebrado terrestre
+Babosa banana,terrestre,invertebrado terrestre
+Lombriz de tierra,terrestre,invertebrado terrestre
+Lombriz gigante de Gippsland,terrestre,invertebrado terrestre
+Sanguijuela,terrestre,invertebrado terrestre
+Garrapata,terrestre,invertebrado terrestre
+Pulga,terrestre,invertebrado terrestre
+Chinche de cama,terrestre,invertebrado terrestre
+Piojo,terrestre,invertebrado terrestre
+Ácaro rojo,terrestre,invertebrado terrestre
+Cochinilla de humedad,terrestre,invertebrado terrestre
+Cangrejo de los cocoteros,terrestre,invertebrado terrestre
+Cangrejo rojo de tierra,terrestre,invertebrado terrestre
+Gusano de terciopelo,terrestre,invertebrado terrestre
+Planaria terrestre,terrestre,invertebrado terrestre
+Águila real,volador,ave rapaz
+Águila calva,volador,ave rapaz
+Águila arpía,volador,ave rapaz
+Águila imperial ibérica,volador,ave rapaz
+Águila pescadora,volador,ave rapaz
+Águila marcial,volador,ave rapaz
+Águila coronada,volador,ave rapaz
+Águila de Steller,volador,ave rapaz
+Águila monera,volador,ave rapaz
+Águila culebrera,volador,ave rapaz
+Águila perdicera,volador,ave rapaz
+Águila audaz,volador,ave rapaz
+Pigargo europeo,volador,ave rapaz
+Aguilucho lagunero,volador,ave rapaz
+Gavilán común,volador,ave rapaz
+Azor común,volador,ave rapaz
+Halcón peregrino,volador,ave rapaz
+Halcón gerifalte,volador,ave rapaz
+Halcón sacre,volador,ave rapaz
+Halcón de Harris,volador,ave rapaz
+Cernícalo vulgar,volador,ave rapaz
+Esmerejón,volador,ave rapaz
+Alcotán,volador,ave rapaz
+Milano real,volador,ave rapaz
+Milano negro,volador,ave rapaz
+Busardo ratonero,volador,ave rapaz
+Caracara,volador,ave rapaz
+Secretario,volador,ave rapaz
+Cóndor andino,volador,ave rapaz
+Cóndor de California,volador,ave rapaz
+Buitre leonado,volador,ave rapaz
+Buitre negro,volador,ave rapaz
+Quebrantahuesos,volador,ave rapaz
+Alimoche,volador,ave rapaz
+Zopilote negro,volador,ave rapaz
+Zopilote rey,volador,ave rapaz
+Aura gallipavo,volador,ave rapaz
+Buitre de Rüppell,volador,ave rapaz
+Buitre orejudo,volador,ave rapaz
+Búho real,volador,ave rapaz nocturna
+Búho nival,volador,ave rapaz nocturna
+Gran búho cornudo,volador,ave rapaz nocturna
+Búho pescador de Blakiston,volador,ave rapaz nocturna
+Búho chico,volador,ave rapaz nocturna
+Búho campestre,volador,ave rapaz nocturna
+Lechuza común,volador,ave rapaz nocturna
+Mochuelo europeo,volador,ave rapaz nocturna
+Mochuelo excavador,volador,ave rapaz nocturna
+Cárabo común,volador,ave rapaz nocturna
+Cárabo lapón,volador,ave rapaz nocturna
+Autillo,volador,ave rapaz nocturna
+Tecolote enano,volador,ave rapaz nocturna
+Guacamayo rojo,volador,ave
+Guacamayo azul y amarillo,volador,ave
+Guacamayo jacinto,volador,ave
+Guacamayo verde,volador,ave
+Loro gris africano,volador,ave
+Loro amazónico,volador,ave
+Loro eclectus,volador,ave
+Cacatúa de cresta amarilla,volador,ave
+Cacatúa negra,volador,ave
+Cacatúa galah,volador,ave
+Periquito,volador,ave
+Agapornis,volador,ave
+Cotorra argentina,volador,ave
+Cotorra de Kramer,volador,ave
+Kea,volador,ave
+Lori arcoíris,volador,ave
+Ninfa,volador,ave
+Cisne mudo,volador,ave
+Cisne negro,volador,ave
+Cisne trompetero,volador,ave
+Ganso canadiense,volador,ave
+Ganso común,volador,ave
+Ganso del Nilo,volador,ave
+Barnacla,volador,ave
+Pato real,volador,ave
+Pato mandarín,volador,ave
+Pato criollo,volador,ave
+Pato joyuyo,volador,ave
+Cerceta común,volador,ave
+Porrón,volador,ave
+Eider,volador,ave
+Tarro blanco,volador,ave
+Flamenco rosado,volador,ave
+Flamenco andino,volador,ave
+Garza real,volador,ave
+Garza blanca,volador,ave
+Garceta común,volador,ave
+Garcilla bueyera,volador,ave
+Martinete,volador,ave
+Avetoro,volador,ave
+Garza goliat,volador,ave
+Cigüeña blanca,volador,ave
+Cigüeña negra,volador,ave
+Marabú africano,volador,ave
+Jabirú,volador,ave
+Tántalo,volador,ave
+Ibis escarlata,volador,ave
+Ibis sagrado,volador,ave
+Ibis eremita,volador,ave
+Espátula rosada,volador,ave
+Espátula común,volador,ave
+Grulla común,volador,ave
+Grulla coronada,volador,ave
+Grulla de Manchuria,volador,ave
+Grulla trompetera,volador,ave
+Pelícano blanco,volador,ave
+Pelícano pardo,volador,ave
+Pelícano ceñudo,volador,ave
+Cormorán grande,volador,ave
+Anhinga,volador,ave
+Alcatraz atlántico,volador,ave
+Piquero de patas azules,volador,ave
+Fragata magnífica,volador,ave
+Rabijunco,volador,ave
+Albatros viajero,volador,ave
+Albatros de ceja negra,volador,ave
+Petrel gigante,volador,ave
+Pardela cenicienta,volador,ave
+Paíño,volador,ave
+Gaviota argéntea,volador,ave
+Gaviota reidora,volador,ave
+Gavión atlántico,volador,ave
+Charrán ártico,volador,ave
+Charrán común,volador,ave
+Rayador,volador,ave
+Frailecillo atlántico,volador,ave
+Alca común,volador,ave
+Arao común,volador,ave
+Págalo grande,volador,ave
+Martín pescador,volador,ave
+Martín gigante,volador,ave
+Somormujo lavanco,volador,ave
+Zampullín,volador,ave
+Colimbo,volador,ave
+Focha común,volador,ave
+Gallineta común,volador,ave
+Calamón,volador,ave
+Rascón,volador,ave
+Avoceta,volador,ave
+Ostrero,volador,ave
+Chorlitejo,volador,ave
+Chorlito dorado,volador,ave
+Zarapito real,volador,ave
+Correlimos común,volador,ave
+Agachadiza,volador,ave
+Avefría,volador,ave
+Cigüeñuela,volador,ave
+Aguja colinegra,volador,ave
+Vuelvepiedras,volador,ave
+Andarríos,volador,ave
+Jacana,volador,ave
+Cuervo grande,volador,ave
+Corneja negra,volador,ave
+Graja,volador,ave
+Urraca,volador,ave
+Rabilargo,volador,ave
+Arrendajo,volador,ave
+Arrendajo azul,volador,ave
+Grajilla,volador,ave
+Chova piquirroja,volador,ave
+Cascanueces,volador,ave
+Estornino pinto,volador,ave
+Estornino negro,volador,ave
+Miná,volador,ave
+Mirlo común,volador,ave
+Zorzal común,volador,ave
+Petirrojo,volador,ave
+Ruiseñor,volador,ave
+Gorrión común,volador,ave
+Gorrión molinero,volador,ave
+Jilguero,volador,ave
+Canario,volador,ave
+Verderón,volador,ave
+Pardillo,volador,ave
+Lúgano,volador,ave
+Pinzón vulgar,volador,ave
+Herrerillo,volador,ave
+Carbonero común,volador,ave
+Mito,volador,ave
+Golondrina común,volador,ave
+Vencejo común,volador,ave
+Vencejo real,volador,ave
+Avión común,volador,ave
+Avión zapador,volador,ave
+Alondra común,volador,ave
+Cogujada,volador,ave
+Calandria,volador,ave
+Lavandera blanca,volador,ave
+Bisbita,volador,ave
+Cardenal rojo,volador,ave
+Azulejo,volador,ave
+Oropéndola,volador,ave
+Tordo sargento,volador,ave
+Cenzontle,volador,ave
+Zanate,volador,ave
+Quetzal,volador,ave
+Tucán toco,volador,ave
+Tucán pico iris,volador,ave
+Tucancillo esmeralda,volador,ave
+Cálao bicorne,volador,ave
+Cálao rinoceronte,volador,ave
+Abubilla,volador,ave
+Abejaruco,volador,ave
+Carraca,volador,ave
+Cuco común,volador,ave
+Críalo,volador,ave
+Pájaro carpintero,volador,ave
+Pito real,volador,ave
+Pico picapinos,volador,ave
+Torcecuello,volador,ave
+Carpintero imperial,volador,ave
+Colibrí garganta rubí,volador,ave
+Colibrí gigante,volador,ave
+Zunzuncito,volador,ave
+Colibrí pico espada,volador,ave
+Colibrí cola de raqueta,volador,ave
+Ave del paraíso,volador,ave
+Tejedor,volador,ave
+Bengalí,volador,ave
+Diamante mandarín,volador,ave
+Diamante de Gould,volador,ave
+Paloma bravía,volador,ave
+Paloma torcaz,volador,ave
+Tórtola europea,volador,ave
+Tórtola turca,volador,ave
+Paloma mensajera,volador,ave
+Paloma coronada,volador,ave
+Faisán común,volador,ave
+Faisán dorado,volador,ave
+Perdiz roja,volador,ave
+Codorniz,volador,ave
+Urogallo,volador,ave
+Lagópodo,volador,ave
+Gallo de las artemisas,volador,ave
+Chotacabras,volador,ave
+Podargo,volador,ave
+Guácharo,volador,ave
+Hoatzín,volador,ave
+Turaco,volador,ave
+Momoto,volador,ave
+Trogón,volador,ave
+Cotinga,volador,ave
+Gallito de las rocas,volador,ave
+Manaquín,volador,ave
+Tangara,volador,ave
+Tangara escarlata,volador,ave
+Mosquitero,volador,ave
+Curruca capirotada,volador,ave
+Reyezuelo,volador,ave
+Chochín,volador,ave
+Trepador azul,volador,ave
+Agateador,volador,ave
+Alcaudón,volador,ave
+Picogordo,volador,ave
+Piquituerto,volador,ave
+Camachuelo,volador,ave
+Escribano,volador,ave
+Collalba,volador,ave
+Tarabilla,volador,ave
+Colirrojo,volador,ave
+Papamoscas,volador,ave
+Mielero,volador,ave
+Pájaro campana,volador,ave
+Ave martillo,volador,ave
+Picozapato,volador,ave
+Kookaburra,volador,ave
+Pájaro sastre,volador,ave
+Bulbul,volador,ave
+Drongo,volador,ave
+Oropéndola de Montezuma,volador,ave
+Murciélago vampiro,volador,murciélago
+Zorro volador,volador,murciélago
+Murciélago de herradura,volador,murciélago
+Murciélago orejudo,volador,murciélago
+Murciélago pescador,volador,murciélago
+Murciélago abejorro,volador,murciélago
+Murciélago común,volador,murciélago
+Murciélago cola de ratón,volador,murciélago
+Murciélago martillo,volador,murciélago
+Murciélago fantasma,volador,murciélago
+Murciélago de la fruta egipcio,volador,murciélago
+Nóctulo gigante,volador,murciélago
+Abeja melífera,volador,insecto
+Abeja africanizada,volador,insecto
+Abejorro,volador,insecto
+Abeja carpintera,volador,insecto
+Avispa común,volador,insecto
+Avispón asiático gigante,volador,insecto
+Avispón europeo,volador,insecto
+Avispa cazadora de tarántulas,volador,insecto
+Avispa alfarera,volador,insecto
+Avispa papelera,volador,insecto
+Mosca doméstica,volador,insecto
+Mosca tse-tsé,volador,insecto
+Mosca de la fruta,volador,insecto
+Moscarda azul,volador,insecto
+Tábano,volador,insecto
+Mosquito tigre,volador,insecto
+Mosquito anófeles,volador,insecto
+Libélula emperador,volador,insecto
+Libélula,volador,insecto
+Caballito del diablo,volador,insecto
+Mariposa monarca,volador,insecto
+Morfo azul,volador,insecto
+Mariposa cola de golondrina,volador,insecto
+Mariposa búho,volador,insecto
+Mariposa de la col,volador,insecto
+Mariposa alas de pájaro,volador,insecto
+Polilla atlas,volador,insecto
+Esfinge colibrí,volador,insecto
+Polilla luna,volador,insecto
+Esfinge de la calavera,volador,insecto
+Luciérnaga,volador,insecto
+Mariquita,volador,insecto
+Cigarra,volador,insecto
+Langosta del desierto,volador,insecto
+Escarabajo Goliat,volador,insecto
+Ciervo volante,volador,insecto
+Efímera,volador,insecto
+Crisopa,volador,insecto
+Hormiga león,volador,insecto
+Mosca escorpión,volador,insecto
+Chinche hedionda,volador,insecto
+Abeja de las orquídeas,volador,insecto
+Ardilla voladora,volador,animal planeador
+Colugo,volador,animal planeador
+Dragón volador,volador,animal planeador
+Serpiente voladora del paraíso,volador,animal planeador
+Rana voladora de Wallace,volador,animal planeador
+Petauro del azúcar,volador,animal planeador
+Tiburón blanco,marino,pez cartilaginoso
+Tiburón tigre,marino,pez cartilaginoso
+Tiburón toro,marino,pez cartilaginoso
+Tiburón martillo gigante,marino,pez cartilaginoso
+Tiburón ballena,marino,pez cartilaginoso
+Tiburón peregrino,marino,pez cartilaginoso
+Tiburón mako,marino,pez cartilaginoso
+Tiburón azul,marino,pez cartilaginoso
+Tiburón limón,marino,pez cartilaginoso
+Tiburón nodriza,marino,pez cartilaginoso
+Tiburón de puntas negras,marino,pez cartilaginoso
+Tiburón oceánico de puntas blancas,marino,pez cartilaginoso
+Tiburón zorro,marino,pez cartilaginoso
+Tiburón duende,marino,pez cartilaginoso
+Tiburón de Groenlandia,marino,pez cartilaginoso
+Tiburón cebra,marino,pez cartilaginoso
+Tiburón sierra,marino,pez cartilaginoso
+Tiburón ángel,marino,pez cartilaginoso
+Tiburón cigarro,marino,pez cartilaginoso
+Tiburón boquiancho,marino,pez cartilaginoso
+Tiburón anguila,marino,pez cartilaginoso
+Tiburón alfombra,marino,pez cartilaginoso
+Pintarroja,marino,pez cartilaginoso
+Cazón,marino,pez cartilaginoso
+Mantarraya gigante,marino,pez cartilaginoso
+Raya águila,marino,pez cartilaginoso
+Raya látigo,marino,pez cartilaginoso
+Raya motoro marina,marino,pez cartilaginoso
+Pez sierra,marino,pez cartilaginoso
+Pez guitarra,marino,pez cartilaginoso
+Raya torpedo,marino,pez cartilaginoso
+Quimera,marino,pez cartilaginoso
+Atún rojo,marino,pez
+Atún de aleta amarilla,marino,pez
+Bonito,marino,pez
+Caballa,marino,pez
+Sardina,marino,pez
+Anchoa,marino,pez
+Arenque,marino,pez
+Bacalao,marino,pez
+Merluza,marino,pez
+Abadejo,marino,pez
+Eglefino,marino,pez
+Lenguado,marino,pez
+Rodaballo,marino,pez
+Platija,marino,pez
+Fletán,marino,pez
+Salmón atlántico,marino,pez
+Salmón real,marino,pez
+Pez espada,marino,pez
+Pez vela,marino,pez
+Marlín azul,marino,pez
+Marlín negro,marino,pez
+Dorado mahi-mahi,marino,pez
+Barracuda,marino,pez
+Mero gigante,marino,pez
+Mero de Nassau,marino,pez
+Pargo rojo,marino,pez
+Robalo,marino,pez
+Lubina,marino,pez
+Dorada,marino,pez
+Corvina,marino,pez
+Lisa,marino,pez
+Pez luna,marino,pez
+Pez remo,marino,pez
+Pez globo,marino,pez
+Pez erizo,marino,pez
+Pez cofre,marino,pez
+Pez ballesta,marino,pez
+Pez loro,marino,pez
+Pez ángel emperador,marino,pez
+Pez mariposa,marino,pez
+Pez payaso,marino,pez
+Pez cirujano azul,marino,pez
+Pez león,marino,pez
+Pez piedra,marino,pez
+Pez escorpión,marino,pez
+Rascacio,marino,pez
+Morena verde,marino,pez
+Morena gigante,marino,pez
+Congrio,marino,pez
+Anguila europea,marino,pez
+Anguila jardinera,marino,pez
+Pez trompeta,marino,pez
+Pez aguja,marino,pez
+Caballito de mar,marino,pez
+Dragón de mar foliado,marino,pez
+Pez pipa,marino,pez
+Pez sapo,marino,pez
+Rape,marino,pez
+Pez víbora,marino,pez
+Pez dragón negro,marino,pez
+Pez linterna,marino,pez
+Anguila pelícano,marino,pez
+Pez hacha,marino,pez
+Pez borrón,marino,pez
+Pez lobo,marino,pez
+Pez napoleón,marino,pez
+Pez murciélago,marino,pez
+Pez rana,marino,pez
+Pez piloto,marino,pez
+Rémora,marino,pez
+Pez volador,marino,pez
+Jurel,marino,pez
+Pámpano,marino,pez
+Palometa,marino,pez
+Wahoo,marino,pez
+Cobia,marino,pez
+Tarpón,marino,pez
+Macabí,marino,pez
+Pez gallo,marino,pez
+Mojarra,marino,pez
+Salmonete,marino,pez
+Besugo,marino,pez
+Sargo,marino,pez
+Dentón,marino,pez
+Espadín,marino,pez
+Capelán,marino,pez
+Pez hielo antártico,marino,pez
+Bacalao antártico,marino,pez
+Celacanto,marino,pez
+Esturión beluga,marino,pez
+Lamprea marina,marino,pez
+Mixino,marino,pez
+Gobio,marino,pez
+Blenio,marino,pez
+Pez mandarín,marino,pez
+Pez halcón,marino,pez
+Pez ardilla,marino,pez
+Pez cardenal,marino,pez
+Damisela,marino,pez
+Castañuela,marino,pez
+Pez unicornio,marino,pez
+Ídolo moro,marino,pez
+Pez conejo,marino,pez
+Pez murciélago de labios rojos,marino,pez
+Rape abisal,marino,pez
+Pez ogro,marino,pez
+Pez trípode,marino,pez
+Granadero,marino,pez
+Pez cinto,marino,pez
+Pez sable,marino,pez
+Pez San Pedro,marino,pez
+Cabracho,marino,pez
+Chopa,marino,pez
+Boga,marino,pez
+Aguja imperial,marino,pez
+Pez ballesta titán,marino,pez
+Pez globo tigre,marino,pez
+Pez cabra,marino,pez
+Pez trompetero,marino,pez
+Ballena azul,marino,mamífero marino
+Ballena jorobada,marino,mamífero marino
+Ballena franca austral,marino,mamífero marino
+Ballena gris,marino,mamífero marino
+Rorcual común,marino,mamífero marino
+Ballena de Groenlandia,marino,mamífero marino
+Cachalote,marino,mamífero marino
+Cachalote pigmeo,marino,mamífero marino
+Ballena minke,marino,mamífero marino
+Orca,marino,mamífero marino
+Delfín mular,marino,mamífero marino
+Delfín común,marino,mamífero marino
+Delfín girador,marino,mamífero marino
+Delfín listado,marino,mamífero marino
+Delfín de Risso,marino,mamífero marino
+Calderón común,marino,mamífero marino
+Beluga,marino,mamífero marino
+Narval,marino,mamífero marino
+Marsopa común,marino,mamífero marino
+Vaquita marina,marino,mamífero marino
+Zifio de Cuvier,marino,mamífero marino
+Falsa orca,marino,mamífero marino
+Delfín de Commerson,marino,mamífero marino
+Manatí antillano,marino,mamífero marino
+Dugongo,marino,mamífero marino
+Morsa,marino,mamífero marino
+Foca común,marino,mamífero marino
+Foca gris,marino,mamífero marino
+Foca leopardo,marino,mamífero marino
+Foca de Weddell,marino,mamífero marino
+Foca monje del Mediterráneo,marino,mamífero marino
+Foca arpa,marino,mamífero marino
+Foca cangrejera,marino,mamífero marino
+Elefante marino del sur,marino,mamífero marino
+Elefante marino del norte,marino,mamífero marino
+León marino de California,marino,mamífero marino
+León marino de Steller,marino,mamífero marino
+Lobo marino sudamericano,marino,mamífero marino
+Oso marino ártico,marino,mamífero marino
+Nutria marina,marino,mamífero marino
+Tortuga laúd,marino,reptil marino
+Tortuga verde,marino,reptil marino
+Tortuga carey,marino,reptil marino
+Tortuga boba,marino,reptil marino
+Tortuga golfina,marino,reptil marino
+Tortuga plana,marino,reptil marino
+Serpiente marina de vientre amarillo,marino,reptil marino
+Krait marino,marino,reptil marino
+Iguana marina,marino,reptil marino
+Pingüino emperador,marino,ave marina que no vuela
+Pingüino rey,marino,ave marina que no vuela
+Pingüino de Adelia,marino,ave marina que no vuela
+Pingüino de Humboldt,marino,ave marina que no vuela
+Pingüino de Magallanes,marino,ave marina que no vuela
+Pingüino azul,marino,ave marina que no vuela
+Pingüino saltarrocas,marino,ave marina que no vuela
+Pingüino barbijo,marino,ave marina que no vuela
+Pingüino papúa,marino,ave marina que no vuela
+Pingüino de Galápagos,marino,ave marina que no vuela
+Pulpo gigante del Pacífico,marino,molusco
+Pulpo común,marino,molusco
+Pulpo de anillos azules,marino,molusco
+Pulpo mimo,marino,molusco
+Pulpo dumbo,marino,molusco
+Pulpo manta,marino,molusco
+Calamar gigante,marino,molusco
+Calamar colosal,marino,molusco
+Calamar de Humboldt,marino,molusco
+Calamar vampiro,marino,molusco
+Calamar luciérnaga,marino,molusco
+Sepia común,marino,molusco
+Sepia gigante,marino,molusco
+Sepia flamboyán,marino,molusco
+Nautilo,marino,molusco
+Caracol cono,marino,molusco
+Caracola reina,marino,molusco
+Tritón de mar,marino,molusco
+Almeja gigante,marino,molusco
+Ostra,marino,molusco
+Mejillón,marino,molusco
+Vieira,marino,molusco
+Navaja,marino,molusco
+Lapa,marino,molusco
+Abulón,marino,molusco
+Liebre de mar,marino,molusco
+Dragón azul,marino,molusco
+Bailarina española,marino,molusco
+Quitón,marino,molusco
+Bígaro,marino,molusco
+Berberecho,marino,molusco
+Coquina,marino,molusco
+Langosta espinosa,marino,crustáceo
+Bogavante americano,marino,crustáceo
+Bogavante europeo,marino,crustáceo
+Cangrejo real,marino,crustáceo
+Cangrejo araña japonés,marino,crustáceo
+Cangrejo azul,marino,crustáceo
+Cangrejo violinista,marino,crustáceo
+Cangrejo ermitaño,marino,crustáceo
+Cangrejo Dungeness,marino,crustáceo
+Centolla,marino,crustáceo
+Nécora,marino,crustáceo
+Buey de mar,marino,crustáceo
+Camarón mantis,marino,crustáceo
+Camarón pistola,marino,crustáceo
+Camarón limpiador,marino,crustáceo
+Langostino tigre,marino,crustáceo
+Cigala,marino,crustáceo
+Krill antártico,marino,crustáceo
+Percebe,marino,crustáceo
+Bellota de mar,marino,crustáceo
+Copépodo,marino,crustáceo
+Isópodo gigante,marino,crustáceo
+Cangrejo herradura,marino,crustáceo
+Cangrejo yeti,marino,crustáceo
+Cangrejo boxeador,marino,crustáceo
+Cangrejo fantasma,marino,crustáceo
+Medusa melena de león,marino,invertebrado marino
+Avispa de mar,marino,invertebrado marino
+Carabela portuguesa,marino,invertebrado marino
+Medusa luna,marino,invertebrado marino
+Medusa inmortal,marino,invertebrado marino
+Medusa huevo frito,marino,invertebrado marino
+Medusa de Irukandji,marino,invertebrado marino
+Anémona de mar,marino,invertebrado marino
+Coral cerebro,marino,invertebrado marino
+Coral cuerno de alce,marino,invertebrado marino
+Coral de fuego,marino,invertebrado marino
+Gorgonia,marino,invertebrado marino
+Pluma de mar,marino,invertebrado marino
+Estrella de mar común,marino,invertebrado marino
+Estrella corona de espinas,marino,invertebrado marino
+Estrella girasol,marino,invertebrado marino
+Ofiura,marino,invertebrado marino
+Erizo de mar púrpura,marino,invertebrado marino
+Erizo diadema,marino,invertebrado marino
+Erizo de fuego,marino,invertebrado marino
+Dólar de arena,marino,invertebrado marino
+Pepino de mar,marino,invertebrado marino
+Lirio de mar,marino,invertebrado marino
+Esponja barril gigante,marino,invertebrado marino
+Esponja de tubo,marino,invertebrado marino
+Gusano de Bobbit,marino,invertebrado marino
+Gusano tubícola gigante,marino,invertebrado marino
+Gusano árbol de Navidad,marino,invertebrado marino
+Salpa,marino,invertebrado marino
+Ascidia,marino,invertebrado marino
+Nuez de mar,marino,invertebrado marino
+Pirosoma,marino,invertebrado marino
+Gusano de fuego barbudo,marino,invertebrado marino
+Cochinilla de mar gigante,marino,invertebrado marino
