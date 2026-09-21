@@ -52,13 +52,16 @@ ARENA_SORTEO = "sorteo"  # cada pelea cae en una arena al azar
 
 # ---------------------------------------------------------------- cliente de Jev
 def llave():
+    """Busca la llave en: variable de entorno → archivo .env de esta carpeta → ~/jev-ultrafast/.env"""
     key = os.environ.get("TYPESAFE_API_KEY", "").strip()
-    if not key and ENV.exists():
-        for line in ENV.read_text().splitlines():
-            if line.startswith("TYPESAFE_API_KEY="):
-                key = line.split("=", 1)[1].strip()
+    for archivo in (AQUI / ".env", ENV):
+        if not key and archivo.exists():
+            for line in archivo.read_text().splitlines():
+                if line.startswith("TYPESAFE_API_KEY="):
+                    key = line.split("=", 1)[1].strip().strip('"\'')
     if not key:
-        sys.exit(f"Falta la llave: define TYPESAFE_API_KEY o ponla en {ENV}")
+        sys.exit("Falta la llave de TypeSafe. Copia .env.example como .env en esta carpeta y pon ahí tu llave\n"
+                 "(se obtiene en https://console.typesafe.ai/settings/keys).")
     return key
 
 
